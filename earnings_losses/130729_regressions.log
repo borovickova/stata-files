@@ -1,0 +1,204 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   13.0   Copyright 1985-2013 StataCorp LP
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 16-core Stata network perpetual license:
+       Serial number:  501306200703
+         Licensed to:  HPC, ITS
+                       New York University, NY
+
+Notes:
+      1.  (-v# option or -set maxvar-) 5000 maximum variables
+      2.  Command line editing disabled
+      3.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130729_regressions.do 
+
+. * CREATE FILES FOR THE REGRESSION
+. * CHOOSE THE CONTROL AND TREATMENT GROUPS, MATCH THEM WITH THE HISTORY
+. 
+. local filepath "/scratch/kb103/stata/earnings_losses"
+
+. 
+. ***** CREATE FILES****************************************
+. /*
+> use "`filepath'/control_Davis_ind_1.dta"
+> forval ii = 2/10{
+>         append using "`filepath'/control_Davis_ind_`ii'.dta"
+> }
+> gen int year_mass_layoff = year+1
+> save "`filepath'/control_Davis_ind_all.dta", replace
+> 
+> clear
+> 
+> use "`filepath'/control_treatment_ind_1.dta"
+> forval ii = 2/10{
+>         append using "`filepath'/control_treatment_ind_`ii'.dta"
+> }
+> gen int year_mass_layoff = year
+> save "`filepath'/control_treatment_ind_all.dta", replace
+> 
+> clear
+> use "`filepath'/control_Davis_ind_all.dta"
+> append using "`filepath'/control_treatment_ind_all.dta"
+> save "`filepath'/control_treatment_all_measures.dta"
+> 
+> clear
+> 
+> use "`filepath'/employed_UStype_1_0.dta"
+> append using "`filepath'/employed_UStype_1_1.dta"
+> forval ii = 2/10{
+>         append using "`filepath'/employed_UStype_`ii'_0.dta"
+>         append using "`filepath'/employed_UStype_`ii'_1.dta"
+> }
+> save "`filepath'/employed_UStype_all.dta", replace
+> 
+> */
+. 
+. /*
+> ***** THIS IS JUST A TESTING SAMPLE ******************************
+> 
+> use "`filepath'/employed_UStype_1_1.dta"
+> gen double r=runiform()
+> keep if r<0.1
+> saveold "`filepath'/employed_UStype_1_1_sample.dta", replace
+> 
+> use  "`filepath'/control_treatment_ind_all.dta", replace
+> keep if year_mass_layoff==1982
+> saveold "`filepath'/control_treatment_ind_all_1982.dta", replace
+> 
+> */
+. 
+. ***** CREATE FILES FOR EACH YEAR ******************************
+. /*
+> forval yy = 1982/1985{
+>         
+>         * TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
+>         use "`filepath'/control_treatment_ind_all.dta", clear
+>         keep if year_mass_layoff ==`yy'
+>         sort pid fid days_worked_beginning
+>         drop if days_worked_beginning==.
+>         drop if days_worked_beginning<100
+>         by pid fid: gen int index = _n
+>         keep if index ==1
+>         drop index
+>         by pid: gen int index = _n
+>         by pid: egen int index2 = max(index)
+>         save "`filepath'/temp_`yy'.dta"
+>         
+>         drop if index2>1
+>         drop index index2
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_treatment_ind_year`yy'.dta", replace
+>         
+>         use "`filepath'/temp_`yy'.dta", clear
+>         keep if index2>1
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_treatment_ind_multi_year`yy'.dta", replace
+>         
+>         * DAVIS MEASURE
+>         use "`filepath'/control_Davis_ind_all.dta", clear
+>         keep if year_mass_layoff ==`yy'
+>         sort pid fid days_worked_beginning
+>         drop if days_worked_beginning==.
+>         drop if days_worked_beginning<100
+>         by pid fid: gen int index = _n
+>         keep if index ==1
+>         drop index
+>         by pid: gen int index = _n
+>         by pid: egen int index2 = max(index)
+>         save "`filepath'/Dtemp_`yy'.dta"
+>         
+>         drop if index2>1
+>         drop index index2
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_Davis_ind_year`yy'.dta", replace
+>         
+>         use "`filepath'/Dtemp_`yy'.dta", clear
+>         keep if index>1
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_Davis_ind_multi_year`yy'.dta", replace
+> 
+>         * MERGE WITH EMPLOYMENT SPELLS
+>         use "`filepath'/employed_UStype_all.dta", clear
+>         merge m:1 pid using "`filepath'/control_treatment_ind_year`yy'.dta", 
+> keep(match)
+>         save "`filepath'/EL_ind_year`yy'.dta", replace
+>         
+>         * MERGE WITH EMPLOYMENT SPELLS
+>         use "`filepath'/employed_UStype_all.dta", clear
+>         merge m:1 pid using "`filepath'/control_Davis_ind_year`yy'.dta", keep
+> (match)
+>         save "`filepath'/EL_Davis_ind_year`yy'.dta", replace
+>         
+> }
+> 
+> 
+> * consider the year 1982; include also 1982, 1983; control group is CG3from t
+> he file
+> * annual inceom histories
+> 
+> * GENERATE ANNUAL INCOME
+>         use "`filepath'/EL_ind_year1982.dta"
+>         drop if income==.
+>         gen real_annual_income_T = income/30*btag/cpi
+>         gen real_annual_income_coded_T = income_coded/30*btag/cpi
+> 
+>         sort pid year
+>         by pid year: gen int index = _n
+>         by pid year: egen real_annual_income = total(real_annual_income_T)
+>         by pid year: egen real_annual_income_coded = total(real_annual_income
+> _coded_T)
+>         keep if index == 1
+>         drop index
+>         keep year pid real_annual_income real_annual_income_coded day* sex ag
+> e CG* TG* fid_ML
+>         gen int year_mass_layoff = 1982
+>         save "`filepath'/EL_annual_income_year1982.dta", replace
+>         
+> * control group DAVIS
+> forval yy=1982/1985{
+>         use "`filepath'/EL_Davis_ind_year`yy'.dta", clear
+>         drop if income==.
+>         gen real_annual_income_T = income/30*btag/cpi
+>         gen real_annual_income_coded_T = income_coded/30*btag/cpi
+> 
+>         sort pid year
+>         by pid year: gen int index = _n
+>         by pid year: egen real_annual_income = total(real_annual_income_T)
+>         by pid year: egen real_annual_income_coded = total(real_annual_income
+> _coded_T)
+>         keep if index == 1
+>         drop index
+>         keep year pid real_annual_income real_annual_income_coded day* sex ag
+> e TG* fid_ML year_mass_layoff
+> 
+>         save "`filepath'/EL_Davis_annual_income_year`yy'.dta", replace  
+> }
+> */
+. 
+. use "`filepath'/EL_annual_income_year1982.dta"
+
+. keep if CG3_men==1 | CG3_women==1
+(3748490 observations deleted)
+
+. keep pid GG3*
+variable GG3* not found
+r(111);
+
+end of do-file
+r(111);

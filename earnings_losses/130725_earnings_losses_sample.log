@@ -1,0 +1,252 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   13.0   Copyright 1985-2013 StataCorp LP
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 16-core Stata network perpetual license:
+       Serial number:  501306200703
+         Licensed to:  HPC, ITS
+                       New York University, NY
+
+Notes:
+      1.  (-v# option or -set maxvar-) 5000 maximum variables
+      2.  Command line editing disabled
+      3.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130725_earnings_losses_sample.do 
+
+. * EARNINGS LOSSES OF DISPLACED WORKERS
+. * IDENTIFY CONTROL AND TREATMENT GROUP EXACTLY AS IN DAVIS AND VON WACHTER
+. 
+. local filepath "/scratch/kb103/stata/earnings_losses"
+
+. /*
+> use "`filepath'/130508_firms_stats_EL_merged_25.dta", clear
+> 
+> replace firm_exit =. if year == 2007
+> replace mass_layoff_indic =. if firm_exit == 1
+> 
+> gen int year2 = year-1
+> rename year year_actual
+> rename year2 year
+> 
+> save "`filepath'/130508_firms_stats_EL_merged_25_shifted.dta", replace
+> 
+> keep if mass_layoff_indic == 1
+> save  "`filepath'/130508_firms_stats_EL_merged_25_shifted_MLonly.dta", replac
+> e
+> */
+. 
+. forval ii = 1/5{
+  2. 
+.         use "`filepath'/130508employed_UStype_EL_`ii'_0.dta", clear
+  3.         append using "`filepath'/130508employed_UStype_EL_`ii'_1.dta"     
+>       
+  4.         merge m:1 fid year using "`filepath'/130508_firms_stats_EL_merged_
+> 25_shifted_MLonly.dta", keep(match)
+  5. 
+.         *keep if _merge==3
+.         *drop _merge
+. 
+.         gen byte A1=0
+  6.         replace A1 = 1 if age<=50 & age>=16
+  7. 
+.         gen byte T4= 0
+  8.         replace T4 = 1 if FEyM1==1 & FEyM2==1
+  9. 
+.         * control and treatment group
+.         
+.         gen byte sepD = 1 if FEyP1~= 1 & edate~=17531
+ 10.         
+.         
+.         * control and treatment group
+.         drop if emp==.
+ 11.         * treatment group
+.         gen byte TG4davis_men = 1 if A1==1 & sex==1 & T4==1 & sepD==1 & mass_
+> layoff_indic ==1
+ 12.         gen byte TG4davis_women = 1 if A1==1 & sex==2 & T4==1 & sepD==1 & 
+> mass_layoff_indic ==1
+ 13.         
+.         keep if TG4davis_men == 1 | TG4davis_women == 1
+ 14.         
+.         keep year pid fid age sex FE* days* T* days_worked_beginning days_wor
+> ked_break
+ 15.         compress
+ 16.         save  "`filepath'/control_Davis_ind_`ii'.dta", replace
+ 17.         clear
+ 18. }
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           281,270  (_merge==3)
+    -----------------------------------------
+(238505 real changes made)
+(191451 real changes made)
+(163566 missing values generated)
+(0 observations deleted)
+(247114 missing values generated)
+(261034 missing values generated)
+(226878 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (979,056 bytes saved)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_1.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           280,632  (_merge==3)
+    -----------------------------------------
+(238141 real changes made)
+(190865 real changes made)
+(162795 missing values generated)
+(0 observations deleted)
+(246863 missing values generated)
+(260185 missing values generated)
+(226416 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (975,888 bytes saved)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_2.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           280,424  (_merge==3)
+    -----------------------------------------
+(238012 real changes made)
+(190565 real changes made)
+(163290 missing values generated)
+(0 observations deleted)
+(246815 missing values generated)
+(260004 missing values generated)
+(226395 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (972,522 bytes saved)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_3.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           281,317  (_merge==3)
+    -----------------------------------------
+(239216 real changes made)
+(191147 real changes made)
+(163360 missing values generated)
+(0 observations deleted)
+(247066 missing values generated)
+(261165 missing values generated)
+(226914 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (979,254 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_4.dta not fo
+> und)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_4.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           281,194  (_merge==3)
+    -----------------------------------------
+(239017 real changes made)
+(191442 real changes made)
+(163566 missing values generated)
+(0 observations deleted)
+(247065 missing values generated)
+(261001 missing values generated)
+(226872 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (977,796 bytes saved)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_5.dta saved
+
+. 
+. 
+end of do-file
