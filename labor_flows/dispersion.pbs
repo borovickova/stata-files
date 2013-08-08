@@ -1,0 +1,24 @@
+### PBS script to run a parallel matlab job 
+### on the cluster
+
+#PBS -l nodes=1:ppn=1,walltime=2:00:00
+#PBS -N flows_time_series
+#PBS -M kb103@nyu.edu
+#PBS -m abe
+#PBS -q bigmem
+#PBS -l mem=32GB
+#PBS -e localhost:/home/kb103/labor_flows/Errors.err
+#PBS -o localhost:/home/kb103/labor_flows/Output.out 
+
+module load stata/11
+cd /home/kb103/labor_flows/katka
+stata-mp -b do 130807_growth_rate_dispersion.do
+
+### You can add more stuff for the script to do after the job is completed
+
+### E.g. zip up the ResultsDir for easy transfer
+### zip -r Results.zip ResultsDir/*.*
+
+exit 0;
+
+
