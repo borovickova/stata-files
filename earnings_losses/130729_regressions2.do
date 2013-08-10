@@ -200,49 +200,35 @@ forval yy = 1982/1985{
 	drop if _merge==3
 	drop _merge
 	save "`filepath'/regression_annual_income_year1982.dta" , replace
-*/	
-/*	
+	
+	
 	use "`filepath'/regression_annual_income_year1982.dta" , clear
-	*keep if _n<1000
-	*saveold "sample_EL1982.dta", replace
-	gen byte treatmet =1 if TG4davis_men==1 | TG4davis_women==1
+	drop D_*
 	
-	* GENERATE Dtk dummies
+	gen int current_year = .
+	local maxround = 2007-1982
 	
-	forval tt = 1976/2007{
-		local k  = `tt'- 1982+8
-		local k1 = `tt'-(1982+1)+8
-		local k2 = `tt'-(1982+2)+8
+	forval kk = -6/`maxround'{
 		
-		gen byte D_`tt'_`k'  = 0
-		gen byte D_`tt'_`k1' = 0
-		gen byte D_`tt'_`k2' = 0
+		replace current_year = year_mass_layoff +`kk' 
 		
-		local tk  = `tt'-`k'+8
-		local tk1 = `tt'-`k1'+8
-		local tk2 = `tt'-`k2'+8
+		local kx = `kk' + 6
 		
-		replace D_`tt'_`k'  = 1 if year==`tt' & year_mass_layoff == `tk'  & treatmet == 1
-		replace D_`tt'_`k1' = 1 if year==`tt' & year_mass_layoff == `tk1' & treatmet == 1
-		replace D_`tt'_`k2' = 1 if year==`tt' & year_mass_layoff == `tk2' & treatmet == 1
+		gen byte D_`kx' = 0
+		replace D_`kx' = 1 if treatmet == 1 & year == current_year
+			
 	}
-
-	gen age1 = year - year_mass_layoff + age
-	gen age2 = age1^2
-	gen age3 = age1^3
-	gen age4 = age1^4
-	save "`filepath'/regression_annual_income_year1982.dta", replace
+	drop current_year
 	
 	sort pid year
-	xtset pid year
-	save "`filepath'/regression_annual_income_year1982.dta", replace
+	save "`filepath'/2regression_annual_income_year1982.dta", replace
 */	
-	use "`filepath'/regression_annual_income_year1982.dta", clear
-
-	xi: xtreg real_annual_income i.year age1 age2 age3 age4 D_1976_2 - D_2007_31 if sex==1, fe
-	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_1976_2 - D_2007_31 if sex==1, fe
 	
-	xi: xtreg real_annual_income i.year age1 age2 age3 age4 D_1976_2 - D_2007_31 if sex==2, fe
-	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_1976_2 - D_2007_31 if sex==2, fe
+	use "`filepath'/2regression_annual_income_year1982.dta", clear
 	
-
+	local maxround = 2007-1982
+	local lastD = `maxround'+6
+	
+	xi: xtreg real_annual_income i.year age1 age2 age3 age4 D_0 - D_`lastD' if sex==1, fe
+	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D_`lastD' if sex==1, fe
+	

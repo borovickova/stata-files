@@ -2,16 +2,17 @@
 ### on the cluster
 
 #PBS -l nodes=1:ppn=1,walltime=4:00:00
-#PBS -N earnings_losses_regress
+#PBS -N EL_regress2
 #PBS -M kb103@nyu.edu
 #PBS -m abe
+#PBS -q bigmem
 #PBS -l mem=32GB
-#PBS -e localhost:/home/kb103/stata-files/earnings_losses/Errors_sample2.err
+#PBS -e localhost:/home/kb103/stata-files/earnings_losses/Errors_reg2.err
 #PBS -o localhost:/home/kb103/stata-files/earnings_losses/Output_sample2.out 
 
 module load stata/13
 cd /home/kb103/stata-files/earnings_losses
-stata-mp -b do 130729_regressions.do
+stata-mp -b do 130729_regressions2.do
 
 ### You can add more stuff for the script to do after the job is completed
 

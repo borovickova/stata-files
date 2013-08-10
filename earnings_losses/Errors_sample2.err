@@ -1,2 +1,3 @@
 /share/apps/stata/11/stata-mp: line 15: /scratch/stata/stata11-bowery.log: Permission denied
 /share/apps/stata/11/stata-mp: line 17: /scratch/stata/stata11-bowery.log: Permission denied
+=>> PBS: job killed: walltime 7207 exceeded limit 7200

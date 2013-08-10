@@ -1,0 +1,467 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   13.0   Copyright 1985-2013 StataCorp LP
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 16-core Stata network perpetual license:
+       Serial number:  501306200703
+         Licensed to:  HPC, ITS
+                       New York University, NY
+
+Notes:
+      1.  (-v# option or -set maxvar-) 5000 maximum variables
+      2.  Command line editing disabled
+      3.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130729_regressions2.do 
+
+. * CREATE FILES FOR THE REGRESSION
+. * CHOOSE THE CONTROL AND TREATMENT GROUPS, MATCH THEM WITH THE HISTORY
+. 
+. local filepath "/scratch/kb103/stata/earnings_losses"
+
+. 
+. ***** CREATE FILES****************************************
+. /*
+> use "`filepath'/control_Davis_ind_1.dta"
+> forval ii = 2/10{
+>         append using "`filepath'/control_Davis_ind_`ii'.dta"
+> }
+> gen int year_mass_layoff = year+1
+> save "`filepath'/control_Davis_ind_all.dta", replace
+> 
+> clear
+> 
+> use "`filepath'/control_treatment_ind_1.dta"
+> forval ii = 2/10{
+>         append using "`filepath'/control_treatment_ind_`ii'.dta"
+> }
+> gen int year_mass_layoff = year
+> save "`filepath'/control_treatment_ind_all.dta", replace
+> 
+> clear
+> use "`filepath'/control_Davis_ind_all.dta"
+> append using "`filepath'/control_treatment_ind_all.dta"
+> save "`filepath'/control_treatment_all_measures.dta"
+> 
+> clear
+> 
+> use "`filepath'/employed_UStype_1_0.dta"
+> append using "`filepath'/employed_UStype_1_1.dta"
+> forval ii = 2/10{
+>         append using "`filepath'/employed_UStype_`ii'_0.dta"
+>         append using "`filepath'/employed_UStype_`ii'_1.dta"
+> }
+> save "`filepath'/employed_UStype_all.dta", replace
+> 
+> */
+. 
+. /*
+> ***** THIS IS JUST A TESTING SAMPLE ******************************
+> 
+> use "`filepath'/employed_UStype_1_1.dta"
+> gen double r=runiform()
+> keep if r<0.1
+> saveold "`filepath'/employed_UStype_1_1_sample.dta", replace
+> 
+> use  "`filepath'/control_treatment_ind_all.dta", replace
+> keep if year_mass_layoff==1982
+> saveold "`filepath'/control_treatment_ind_all_1982.dta", replace
+> 
+> */
+. 
+. ***** CREATE FILES FOR EACH YEAR ******************************
+. /*
+> forval yy = 1982/1985{
+>         
+>         * TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
+>         use "`filepath'/control_treatment_ind_all.dta", clear
+>         keep if year_mass_layoff ==`yy'
+>         sort pid fid days_worked_beginning
+>         drop if days_worked_beginning==.
+>         drop if days_worked_beginning<100
+>         by pid fid: gen int index = _n
+>         keep if index ==1
+>         drop index
+>         by pid: gen int index = _n
+>         by pid: egen int index2 = max(index)
+>         save "`filepath'/temp_`yy'.dta"
+>         
+>         drop if index2>1
+>         drop index index2
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_treatment_ind_year`yy'.dta", replace
+>         
+>         use "`filepath'/temp_`yy'.dta", clear
+>         keep if index2>1
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_treatment_ind_multi_year`yy'.dta", replace
+>         
+>         * DAVIS MEASURE
+>         use "`filepath'/control_Davis_ind_all.dta", clear
+>         keep if year_mass_layoff ==`yy'
+>         sort pid fid days_worked_beginning
+>         drop if days_worked_beginning==.
+>         drop if days_worked_beginning<100
+>         by pid fid: gen int index = _n
+>         keep if index ==1
+>         drop index
+>         by pid: gen int index = _n
+>         by pid: egen int index2 = max(index)
+>         save "`filepath'/Dtemp_`yy'.dta"
+>         
+>         drop if index2>1
+>         drop index index2
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_Davis_ind_year`yy'.dta", replace
+>         
+>         use "`filepath'/Dtemp_`yy'.dta", clear
+>         keep if index>1
+>         rename fid fid_ML 
+>         drop year
+>         save "`filepath'/control_Davis_ind_multi_year`yy'.dta", replace
+> 
+>         * MERGE WITH EMPLOYMENT SPELLS
+>         use "`filepath'/employed_UStype_all.dta", clear
+>         merge m:1 pid using "`filepath'/control_treatment_ind_year`yy'.dta", 
+> keep(match)
+>         save "`filepath'/EL_ind_year`yy'.dta", replace
+>         
+>         * MERGE WITH EMPLOYMENT SPELLS
+>         use "`filepath'/employed_UStype_all.dta", clear
+>         merge m:1 pid using "`filepath'/control_Davis_ind_year`yy'.dta", keep
+> (match)
+>         save "`filepath'/EL_Davis_ind_year`yy'.dta", replace
+>         
+> }
+> 
+> 
+> * consider the year 1982; include also 1982, 1983; control group is CG3from t
+> he file
+> * annual inceom histories
+> 
+> * GENERATE ANNUAL INCOME
+>         use "`filepath'/EL_ind_year1982.dta"
+>         drop if income==.
+>         gen real_annual_income_T = income/30*btag/cpi
+>         gen real_annual_income_coded_T = income_coded/30*btag/cpi
+> 
+>         sort pid year
+>         by pid year: gen int index = _n
+>         by pid year: egen real_annual_income = total(real_annual_income_T)
+>         by pid year: egen real_annual_income_coded = total(real_annual_income
+> _coded_T)
+>         keep if index == 1
+>         drop index
+>         keep year pid real_annual_income real_annual_income_coded day* sex ag
+> e CG* TG* fid_ML
+>         gen int year_mass_layoff = 1982
+>         save "`filepath'/EL_annual_income_year1982.dta", replace
+>         
+> * control group DAVIS
+> forval yy=1982/1985{
+>         use "`filepath'/EL_Davis_ind_year`yy'.dta", clear
+>         drop if income==.
+>         gen real_annual_income_T = income/30*btag/cpi
+>         gen real_annual_income_coded_T = income_coded/30*btag/cpi
+> 
+>         sort pid year
+>         by pid year: gen int index = _n
+>         by pid year: egen real_annual_income = total(real_annual_income_T)
+>         by pid year: egen real_annual_income_coded = total(real_annual_income
+> _coded_T)
+>         keep if index == 1
+>         drop index
+>         keep year pid real_annual_income real_annual_income_coded day* sex ag
+> e TG* fid_ML year_mass_layoff
+> 
+>         save "`filepath'/EL_Davis_annual_income_year`yy'.dta", replace  
+> }
+> 
+> 
+> use "`filepath'/EL_annual_income_year1982.dta"
+> keep if CG3_men==1 | CG3_women==1
+> keep pid CG3*
+> by pid: gen int index = _n
+> keep if index==1
+> drop index
+> saveold "`filepath'/EL_pid_CG31982.dta", replace
+> 
+> forval yy = 1982/1985{
+>         use "`filepath'/EL_Davis_annual_income_year`yy'.dta"
+>         by pid: gen int index = _n
+>         keep if index==1
+>         drop index
+>         keep pid TG* year_mass_layoff
+>         saveold "`filepath'/EL_pid_TG`yy'.dta", replace
+> }
+> 
+>         use "`filepath'/EL_pid_CG31982.dta", clear
+>         append using "`filepath'/EL_pid_TG1982.dta"
+>         append using "`filepath'/EL_pid_TG1983.dta"
+>         append using "`filepath'/EL_pid_TG1984.dta"
+>         sort pid
+>         by pid: gen int index = _n
+>         by pid: egen int maxindex = max(index)
+>         keep if maxindex>1
+>         drop index maxindex
+>         sort pid
+>         by pid: gen int index = _n
+>         keep if index==1
+>         keep pid
+>         save  "`filepath'/EL_1982_todrop.dta", replace
+> 
+> * REGRESSIONS
+>         clear
+>         use "`filepath'/EL_annual_income_year1982.dta" 
+>         keep if CG3_men==1 | CG3_women==1
+>         append using "`filepath'/EL_Davis_annual_income_year1982.dta"
+>         append using "`filepath'/EL_Davis_annual_income_year1983.dta"
+>         append using "`filepath'/EL_Davis_annual_income_year1984.dta"
+>         merge m:1 pid using "`filepath'/EL_1982_todrop.dta"
+>         drop if _merge==3
+>         drop _merge
+>         save "`filepath'/regression_annual_income_year1982.dta" , replace
+>         
+>         
+>         use "`filepath'/regression_annual_income_year1982.dta" , clear
+>         drop D_*
+>         
+>         gen int current_year = .
+>         local maxround = 2007-1982
+>         
+>         forval kk = -6/`maxround'{
+>                 
+>                 replace current_year = year_mass_layoff +`kk' 
+>                 
+>                 local kx = `kk' + 6
+>                 
+>                 gen byte D_`kx' = 0
+>                 replace D_`kx' = 1 if treatmet == 1 & year == current_year
+>                         
+>         }
+>         drop current_year
+>         
+>         sort pid year
+>         save "`filepath'/2regression_annual_income_year1982.dta", replace
+> */      
+.         
+.         use "`filepath'/2regression_annual_income_year1982.dta", clear
+
+.         
+.         local maxround = 2007-1982
+
+.         local lastD = `maxround'+6
+
+.         
+.         xi: xtreg real_annual_income i.year age1 age2 age3 age4 D_0 - D_`last
+> D' if sex==1, fe
+i.year            _Iyear_1972-2008    (naturally coded; _Iyear_1972 omitted)
+note: _Iyear_2008 omitted because of collinearity
+
+Fixed-effects (within) regression               Number of obs      =  13352585
+Group variable: pid                             Number of groups   =    478774
+
+R-sq:  within  = 0.3450                         Obs per group: min =         1
+       between = 0.0027                                        avg =      27.9
+       overall = 0.1317                                        max =        37
+
+                                                F(71,12873740)     =  95518.08
+corr(u_i, Xb)  = -0.1505                        Prob > F           =    0.0000
+
+------------------------------------------------------------------------------
+real_annua~e |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ _Iyear_1973 |   17.95295   .2568952    69.88   0.000     17.44944    18.45645
+ _Iyear_1974 |   34.76925   .2510437   138.50   0.000     34.27722    35.26129
+ _Iyear_1975 |   47.50951   .2463449   192.86   0.000     47.02668    47.99234
+ _Iyear_1976 |    59.5008   .2423383   245.53   0.000     59.02582    59.97577
+ _Iyear_1977 |   77.51392   .2385431   324.95   0.000     77.04638    77.98145
+ _Iyear_1978 |    92.9374   .2352111   395.12   0.000      92.4764    93.39841
+ _Iyear_1979 |   108.7568   .2313733   470.05   0.000     108.3033    109.2103
+ _Iyear_1980 |   120.3857   .2303716   522.57   0.000     119.9342    120.8372
+ _Iyear_1981 |   125.8283   .2298357   547.47   0.000     125.3778    126.2788
+ _Iyear_1982 |   130.9123   .2298439   569.57   0.000     130.4618    131.3628
+ _Iyear_1983 |    139.951   .2302264   607.88   0.000     139.4998    140.4023
+ _Iyear_1984 |   141.6443   .2309744   613.25   0.000     141.1916     142.097
+ _Iyear_1985 |   154.2681   .2333699   661.05   0.000     153.8107    154.7255
+ _Iyear_1986 |   169.4859   .2358602   718.59   0.000     169.0236    169.9481
+ _Iyear_1987 |   181.0525   .2385971   758.82   0.000     180.5849    181.5201
+ _Iyear_1988 |   192.0005   .2416475   794.55   0.000     191.5269    192.4741
+ _Iyear_1989 |   207.7963   .2451871   847.50   0.000     207.3157    208.2768
+ _Iyear_1990 |   226.9432   .2490989   911.06   0.000      226.455    227.4314
+ _Iyear_1991 |   243.8166   .2536059   961.40   0.000     243.3196    244.3137
+ _Iyear_1992 |   255.3399   .2591028   985.48   0.000     254.8321    255.8477
+ _Iyear_1993 |   260.1836   .2649995   981.83   0.000     259.6643     260.703
+ _Iyear_1994 |   269.9248   .2722887   991.32   0.000     269.3912    270.4585
+ _Iyear_1995 |   285.1196   .2793598  1020.62   0.000     284.5721    285.6672
+ _Iyear_1996 |   291.6406    .287132  1015.70   0.000     291.0778    292.2034
+ _Iyear_1997 |   300.0049   .2953507  1015.76   0.000      299.426    300.5837
+ _Iyear_1998 |   310.2369   .3033965  1022.55   0.000     309.6423    310.8316
+ _Iyear_1999 |   324.4618   .3120329  1039.83   0.000     323.8502    325.0734
+ _Iyear_2000 |   329.1777   .3218432  1022.79   0.000     328.5469    329.8085
+ _Iyear_2001 |   337.8185   .3320498  1017.37   0.000     337.1677    338.4693
+ _Iyear_2002 |   348.0014   .3416408  1018.62   0.000     347.3318     348.671
+ _Iyear_2003 |   358.7345    .351439  1020.76   0.000     358.0457    359.4233
+ _Iyear_2004 |   364.5168   .3616384  1007.96   0.000      363.808    365.2256
+ _Iyear_2005 |   371.8773   .3721276   999.33   0.000     371.1479    372.6066
+ _Iyear_2006 |   386.7452   .3816673  1013.30   0.000     385.9972    387.4933
+ _Iyear_2007 |   352.0745   .3914477   899.42   0.000     351.3073    352.8417
+ _Iyear_2008 |          0  (omitted)
+        age1 |   94.49113   .3437235   274.90   0.000     93.81744    95.16482
+        age2 |  -3.596926   .0139653  -257.56   0.000    -3.624297   -3.569554
+        age3 |    .059053   .0002422   243.78   0.000     .0585782    .0595278
+        age4 |   -.000365   1.52e-06  -240.11   0.000     -.000368    -.000362
+         D_0 |  -10.19238   .8936559   -11.41   0.000    -11.94392   -8.440849
+         D_1 |  -13.19306   .8739567   -15.10   0.000    -14.90598   -11.48013
+         D_2 |  -17.04021    .860719   -19.80   0.000    -18.72718   -15.35323
+         D_3 |  -19.83389   .8498843   -23.34   0.000    -21.49964   -18.16815
+         D_4 |  -22.63072    .849921   -26.63   0.000    -24.29653   -20.96491
+         D_5 |  -57.61209   .8440917   -68.25   0.000    -59.26648    -55.9577
+         D_6 |  -58.77153    .900577   -65.26   0.000    -60.53663   -57.00643
+         D_7 |  -54.24178   .9029822   -60.07   0.000     -56.0116   -52.47197
+         D_8 |  -54.69167   .9074042   -60.27   0.000    -56.47015   -52.91319
+         D_9 |  -57.84759   .9140953   -63.28   0.000    -59.63918     -56.056
+        D_10 |  -58.71106   .9225265   -63.64   0.000    -60.51918   -56.90294
+        D_11 |  -59.33878    .930604   -63.76   0.000    -61.16273   -57.51483
+        D_12 |  -61.34735   .9378626   -65.41   0.000    -63.18553   -59.50918
+        D_13 |  -63.89737   .9454582   -67.58   0.000    -65.75043    -62.0443
+        D_14 |  -66.75673   .9563801   -69.80   0.000     -68.6312   -64.88226
+        D_15 |  -68.08003   .9679391   -70.34   0.000    -69.97715    -66.1829
+        D_16 |  -67.73994   .9830522   -68.91   0.000    -69.66669    -65.8132
+        D_17 |  -68.94885   1.001113   -68.87   0.000      -70.911   -66.98671
+        D_18 |  -72.10686   1.020861   -70.63   0.000    -74.10771   -70.10601
+        D_19 |  -75.29402   1.041725   -72.28   0.000    -77.33576   -73.25227
+        D_20 |  -78.54209   1.061431   -74.00   0.000    -80.62246   -76.46172
+        D_21 |   -79.7084   1.083469   -73.57   0.000    -81.83196   -77.58484
+        D_22 |  -80.01498   1.105786   -72.36   0.000    -82.18228   -77.84768
+        D_23 |   -82.1538   1.126367   -72.94   0.000    -84.36144   -79.94616
+        D_24 |   -82.6944   1.149646   -71.93   0.000    -84.94767   -80.44114
+        D_25 |  -85.32011    1.17421   -72.66   0.000    -87.62152    -83.0187
+        D_26 |  -89.98025   1.198545   -75.07   0.000    -92.32936   -87.63115
+        D_27 |   -90.6096   1.226373   -73.88   0.000    -93.01324   -88.20595
+        D_28 |  -90.92723   1.250987   -72.68   0.000    -93.37912   -88.47534
+        D_29 |    -85.529   1.278408   -66.90   0.000    -88.03463   -83.02336
+        D_30 |  -70.67064   1.333063   -53.01   0.000    -73.28339   -68.05788
+        D_31 |  -57.92344   1.602606   -36.14   0.000    -61.06449   -54.78239
+       _cons |   -722.569    3.04699  -237.14   0.000     -728.541    -716.597
+-------------+----------------------------------------------------------------
+     sigma_u |  141.14844
+     sigma_e |  112.42963
+         rho |  .61182004   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0:     F(478773, 12873740) =    36.43    Prob > F = 0.0000
+
+.         xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D
+> _`lastD' if sex==1, fe
+i.year            _Iyear_1972-2008    (naturally coded; _Iyear_1972 omitted)
+note: _Iyear_2008 omitted because of collinearity
+
+Fixed-effects (within) regression               Number of obs      =  13352585
+Group variable: pid                             Number of groups   =    478774
+
+R-sq:  within  = 0.5337                         Obs per group: min =         1
+       between = 0.0066                                        avg =      27.9
+       overall = 0.2498                                        max =        37
+
+                                                F(71,12873740)     = 207489.51
+corr(u_i, Xb)  = -0.2624                        Prob > F           =    0.0000
+
+------------------------------------------------------------------------------
+real_annua~d |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ _Iyear_1973 |   12.50431   .1255024    99.63   0.000     12.25833    12.75029
+ _Iyear_1974 |   24.65217   .1226438   201.01   0.000     24.41179    24.89255
+ _Iyear_1975 |   34.98196   .1203482   290.67   0.000     34.74608    35.21784
+ _Iyear_1976 |   46.69899   .1183909   394.45   0.000     46.46695    46.93103
+ _Iyear_1977 |   63.89828   .1165368   548.31   0.000     63.66987    64.12668
+ _Iyear_1978 |   79.87081    .114909   695.08   0.000      79.6456    80.09603
+ _Iyear_1979 |   95.18427   .1130341   842.08   0.000     94.96273    95.40581
+ _Iyear_1980 |   103.8692   .1125447   922.91   0.000     103.6486    104.0897
+ _Iyear_1981 |   105.6037   .1122829   940.51   0.000     105.3836    105.8238
+ _Iyear_1982 |   108.9951   .1122869   970.68   0.000     108.7751    109.2152
+ _Iyear_1983 |   116.5821   .1124738  1036.53   0.000     116.3617    116.8026
+ _Iyear_1984 |   117.3587   .1128392  1040.05   0.000     117.1375    117.5799
+ _Iyear_1985 |   124.2229   .1140095  1089.58   0.000     123.9994    124.4463
+ _Iyear_1986 |   136.0265   .1152261  1180.52   0.000     135.8006    136.2523
+ _Iyear_1987 |   142.9786   .1165632  1226.62   0.000     142.7502    143.2071
+ _Iyear_1988 |   152.3741   .1180534  1290.72   0.000     152.1427    152.6055
+ _Iyear_1989 |   160.2935   .1197826  1338.20   0.000     160.0587    160.5283
+ _Iyear_1990 |   168.2444   .1216937  1382.52   0.000     168.0059    168.4829
+ _Iyear_1991 |    177.265   .1238955  1430.76   0.000     177.0222    177.5078
+ _Iyear_1992 |   186.3191   .1265809  1471.94   0.000      186.071    186.5672
+ _Iyear_1993 |   190.3195   .1294617  1470.08   0.000     190.0658    190.5733
+ _Iyear_1994 |   202.8603   .1330227  1525.00   0.000     202.5996     203.121
+ _Iyear_1995 |   213.5517   .1364772  1564.74   0.000     213.2842    213.8192
+ _Iyear_1996 |   219.6659   .1402742  1565.98   0.000     219.3909    219.9408
+ _Iyear_1997 |   230.0518   .1442893  1594.38   0.000      229.769    230.3346
+ _Iyear_1998 |   239.5574     .14822  1616.23   0.000     239.2669    239.8479
+ _Iyear_1999 |   246.8215   .1524392  1619.15   0.000     246.5227    247.1202
+ _Iyear_2000 |   249.2679   .1572318  1585.35   0.000     248.9597    249.5761
+ _Iyear_2001 |   256.0048   .1622181  1578.15   0.000     255.6868    256.3227
+ _Iyear_2002 |   260.5571   .1669037  1561.12   0.000       260.23    260.8842
+ _Iyear_2003 |   270.0972   .1716904  1573.16   0.000     269.7607    270.4337
+ _Iyear_2004 |   276.3289   .1766732  1564.07   0.000     275.9827    276.6752
+ _Iyear_2005 |   286.5143   .1817976  1576.01   0.000     286.1579    286.8706
+ _Iyear_2006 |    298.112   .1864581  1598.82   0.000     297.7466    298.4775
+ _Iyear_2007 |   299.5285   .1912361  1566.28   0.000     299.1537    299.9033
+ _Iyear_2008 |          0  (omitted)
+        age1 |   99.10556   .1679211   590.19   0.000     98.77644    99.43468
+        age2 |  -3.592551   .0068226  -526.57   0.000    -3.605923   -3.579179
+        age3 |   .0562286   .0001183   475.14   0.000     .0559967    .0564606
+        age4 |  -.0003344   7.43e-07  -450.22   0.000    -.0003358   -.0003329
+         D_0 |  -7.446584   .4365826   -17.06   0.000     -8.30227   -6.590898
+         D_1 |  -10.22186   .4269589   -23.94   0.000    -11.05868   -9.385033
+         D_2 |  -13.74492   .4204918   -32.69   0.000    -14.56907   -12.92077
+         D_3 |  -15.72804   .4151987   -37.88   0.000    -16.54182   -14.91427
+         D_4 |  -17.39762   .4152166   -41.90   0.000    -18.21143   -16.58381
+         D_5 |  -50.09023   .4123688  -121.47   0.000    -50.89846     -49.282
+         D_6 |  -50.24534   .4399638  -114.20   0.000    -51.10766   -49.38303
+         D_7 |  -44.91307   .4411389  -101.81   0.000    -45.77769   -44.04846
+         D_8 |  -43.91105   .4432992   -99.06   0.000     -44.7799    -43.0422
+         D_9 |  -45.08558    .446568  -100.96   0.000    -45.96084   -44.21033
+        D_10 |  -44.78885    .450687   -99.38   0.000    -45.67218   -43.90552
+        D_11 |  -43.71425   .4546331   -96.15   0.000    -44.60532   -42.82319
+        D_12 |   -43.2081   .4581792   -94.30   0.000    -44.10611   -42.31008
+        D_13 |  -41.82708   .4618899   -90.56   0.000    -42.73237    -40.9218
+        D_14 |  -41.08288   .4672256   -87.93   0.000    -41.99863   -40.16714
+        D_15 |  -41.41522   .4728726   -87.58   0.000    -42.34203    -40.4884
+        D_16 |   -41.6586   .4802559   -86.74   0.000    -42.59989   -40.71732
+        D_17 |  -43.33824   .4890792   -88.61   0.000    -44.29682   -42.37966
+        D_18 |  -46.61546    .498727   -93.47   0.000    -47.59295   -45.63797
+        D_19 |  -48.00402   .5089198   -94.33   0.000    -49.00148   -47.00655
+        D_20 |   -51.2577   .5185468   -98.85   0.000    -52.27403   -50.24137
+        D_21 |  -52.00667   .5293129   -98.25   0.000    -53.04411   -50.96924
+        D_22 |   -51.8547   .5402157   -95.99   0.000    -52.91351    -50.7959
+        D_23 |   -51.1215   .5502703   -92.90   0.000    -52.20001   -50.04299
+        D_24 |  -51.42404   .5616428   -91.56   0.000    -52.52484   -50.32325
+        D_25 |  -52.52309   .5736434   -91.56   0.000    -53.64741   -51.39877
+        D_26 |  -54.21646    .585532   -92.59   0.000    -55.36409   -53.06884
+        D_27 |  -55.66138    .599127   -92.90   0.000    -56.83565   -54.48712
+        D_28 |  -57.40525   .6111515   -93.93   0.000    -58.60308   -56.20741
+        D_29 |  -56.94579   .6245479   -91.18   0.000    -58.16988   -55.72169
+        D_30 |  -50.96371   .6512484   -78.26   0.000    -52.24014   -49.68729
+        D_31 |  -46.72846   .7829297   -59.68   0.000    -48.26297   -45.19394
+       _cons |  -814.4526   1.488563  -547.14   0.000    -817.3701   -811.5351
+-------------+----------------------------------------------------------------
+     sigma_u |  71.452049
+     sigma_e |  54.925867
+         rho |  .62856938   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0:     F(478773, 12873740) =    28.50    Prob > F = 0.0000
+
+.         
+. 
+end of do-file
