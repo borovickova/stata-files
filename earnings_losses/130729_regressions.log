@@ -189,16 +189,247 @@ Note:  Your site can add messages to the introduction by editing the file
 > 
 >         save "`filepath'/EL_Davis_annual_income_year`yy'.dta", replace  
 > }
-> */
+> 
+> 
+> use "`filepath'/EL_annual_income_year1982.dta"
+> keep if CG3_men==1 | CG3_women==1
+> keep pid CG3*
+> by pid: gen int index = _n
+> keep if index==1
+> drop index
+> saveold "`filepath'/EL_pid_CG31982.dta", replace
+> 
+> forval yy = 1982/1985{
+>         use "`filepath'/EL_Davis_annual_income_year`yy'.dta"
+>         by pid: gen int index = _n
+>         keep if index==1
+>         drop index
+>         keep pid TG* year_mass_layoff
+>         saveold "`filepath'/EL_pid_TG`yy'.dta", replace
+> }
+> 
+>         use "`filepath'/EL_pid_CG31982.dta", clear
+>         append using "`filepath'/EL_pid_TG1982.dta"
+>         append using "`filepath'/EL_pid_TG1983.dta"
+>         append using "`filepath'/EL_pid_TG1984.dta"
+>         sort pid
+>         by pid: gen int index = _n
+>         by pid: egen int maxindex = max(index)
+>         keep if maxindex>1
+>         drop index maxindex
+>         sort pid
+>         by pid: gen int index = _n
+>         keep if index==1
+>         keep pid
+>         save  "`filepath'/EL_1982_todrop.dta", replace
+> 
+> * REGRESSIONS
+>         clear
+>         use "`filepath'/EL_annual_income_year1982.dta" 
+>         keep if CG3_men==1 | CG3_women==1
+>         append using "`filepath'/EL_Davis_annual_income_year1982.dta"
+>         append using "`filepath'/EL_Davis_annual_income_year1983.dta"
+>         append using "`filepath'/EL_Davis_annual_income_year1984.dta"
+>         merge m:1 pid using "`filepath'/EL_1982_todrop.dta"
+>         drop if _merge==3
+>         drop _merge
+>         save "`filepath'/regression_annual_income_year1982.dta" , replace
+> */      
 . 
-. use "`filepath'/EL_annual_income_year1982.dta"
+. /*      
+>         use "`filepath'/regression_annual_income_year1982.dta" , clear
+>         gen byte treatmet =1 if TG4davis_men==1 | TG4davis_women==1
+>         
+>         * GENERATE Dtk dummies
+>         
+>         forval tt = 1976/2007{
+>                 local k  = `tt'- 1982+8
+>                 local k1 = `tt'-(1982+1)+8
+>                 local k2 = `tt'-(1982+2)+8
+>                 
+>                 gen byte D_`tt'_`k'  = 0
+>                 gen byte D_`tt'_`k1' = 0
+>                 gen byte D_`tt'_`k2' = 0
+>                 
+>                 local tk  = `tt'-`k'+8
+>                 local tk1 = `tt'-`k1'+8
+>                 local tk2 = `tt'-`k2'+8
+>                 
+>                 replace D_`tt'_`k'  = 1 if year==`tt' & year_mass_layoff == `
+> tk'  & treatmet == 1
+>                 replace D_`tt'_`k1' = 1 if year==`tt' & year_mass_layoff == `
+> tk1' & treatmet == 1
+>                 replace D_`tt'_`k2' = 1 if year==`tt' & year_mass_layoff == `
+> tk2' & treatmet == 1
+>         }
+>         save  "`filepath'/regression_annual_income_year1982_vars.dta", replac
+> e
+> 
+>         use "`filepath'/regression_annual_income_year1982_vars.dta"
+> 
+>         gen age2 = age^2
+>         gen age3 = age^3
+>         gen age4 = age^4
+> 
+>         save  "`filepath'/regression_annual_income_year1982_vars.dta", replac
+> e
+>         *gen mean_income = .
+>         *replace mean_income = 
+>         sort pid year
+>         xtset pid year
+>         save  "`filepath'/regression_annual_income_year1982_vars.dta", replac
+> e
+> */
+.         use "`filepath'/regression_annual_income_year1982_vars.dta"
 
-. keep if CG3_men==1 | CG3_women==1
-(3748490 observations deleted)
+.         describe, fullnames
 
-. keep pid GG3*
-variable GG3* not found
-r(111);
+Contains data from /scratch/kb103/stata/earnings_losses/regression_annual_incom
+> e_year1982_vars.dta
+  obs:    20,218,651                          
+ vars:           128                          9 Aug 2013 18:50
+ size: 3,174,328,207                          
+-------------------------------------------------------------------------------
+              storage   display    value
+variable name   type    format     label      variable label
+-------------------------------------------------------------------------------
+year            int     %8.0g                 
+pid             long    %12.0g                
+fid_ML          double  %10.0g                
+days_worked_beginning
+                int     %9.0g                 
+days_worked_break
+                int     %9.0g                 
+sex             byte    %8.0g                 
+age             byte    %8.0g                 
+TG3_men         byte    %8.0g                 
+TG4_men         byte    %8.0g                 
+TG5_men         byte    %8.0g                 
+TG3_women       byte    %8.0g                 
+TG4_women       byte    %8.0g                 
+TG5_women       byte    %8.0g                 
+CG3_men         byte    %8.0g                 
+CG4_men         byte    %8.0g                 
+CG5_men         byte    %8.0g                 
+CG3_women       byte    %8.0g                 
+CG4_women       byte    %8.0g                 
+CG5_women       byte    %8.0g                 
+TG_men          byte    %8.0g                 
+TG_women        byte    %8.0g                 
+CG_men          byte    %8.0g                 
+CG_women        byte    %8.0g                 
+real_annual_income
+                float   %9.0g                 
+real_annual_income_coded
+                float   %9.0g                 
+year_mass_layoff
+                int     %8.0g                 
+TG4davis_men    byte    %8.0g                 
+TG4davis_women  byte    %8.0g                 
+treatmet        byte    %8.0g                 
+D_1976_2        byte    %8.0g                 
+D_1976_1        byte    %8.0g                 
+D_1976_0        byte    %8.0g                 
+D_1977_3        byte    %8.0g                 
+D_1977_2        byte    %8.0g                 
+D_1977_1        byte    %8.0g                 
+D_1978_4        byte    %8.0g                 
+D_1978_3        byte    %8.0g                 
+D_1978_2        byte    %8.0g                 
+D_1979_5        byte    %8.0g                 
+D_1979_4        byte    %8.0g                 
+D_1979_3        byte    %8.0g                 
+D_1980_6        byte    %8.0g                 
+D_1980_5        byte    %8.0g                 
+D_1980_4        byte    %8.0g                 
+D_1981_7        byte    %8.0g                 
+D_1981_6        byte    %8.0g                 
+D_1981_5        byte    %8.0g                 
+D_1982_8        byte    %8.0g                 
+D_1982_7        byte    %8.0g                 
+D_1982_6        byte    %8.0g                 
+D_1983_9        byte    %8.0g                 
+D_1983_8        byte    %8.0g                 
+D_1983_7        byte    %8.0g                 
+D_1984_10       byte    %8.0g                 
+D_1984_9        byte    %8.0g                 
+D_1984_8        byte    %8.0g                 
+D_1985_11       byte    %8.0g                 
+D_1985_10       byte    %8.0g                 
+D_1985_9        byte    %8.0g                 
+D_1986_12       byte    %8.0g                 
+D_1986_11       byte    %8.0g                 
+D_1986_10       byte    %8.0g                 
+D_1987_13       byte    %8.0g                 
+D_1987_12       byte    %8.0g                 
+D_1987_11       byte    %8.0g                 
+D_1988_14       byte    %8.0g                 
+D_1988_13       byte    %8.0g                 
+D_1988_12       byte    %8.0g                 
+D_1989_15       byte    %8.0g                 
+D_1989_14       byte    %8.0g                 
+D_1989_13       byte    %8.0g                 
+D_1990_16       byte    %8.0g                 
+D_1990_15       byte    %8.0g                 
+D_1990_14       byte    %8.0g                 
+D_1991_17       byte    %8.0g                 
+D_1991_16       byte    %8.0g                 
+D_1991_15       byte    %8.0g                 
+D_1992_18       byte    %8.0g                 
+D_1992_17       byte    %8.0g                 
+D_1992_16       byte    %8.0g                 
+D_1993_19       byte    %8.0g                 
+D_1993_18       byte    %8.0g                 
+D_1993_17       byte    %8.0g                 
+D_1994_20       byte    %8.0g                 
+D_1994_19       byte    %8.0g                 
+D_1994_18       byte    %8.0g                 
+D_1995_21       byte    %8.0g                 
+D_1995_20       byte    %8.0g                 
+D_1995_19       byte    %8.0g                 
+D_1996_22       byte    %8.0g                 
+D_1996_21       byte    %8.0g                 
+D_1996_20       byte    %8.0g                 
+D_1997_23       byte    %8.0g                 
+D_1997_22       byte    %8.0g                 
+D_1997_21       byte    %8.0g                 
+D_1998_24       byte    %8.0g                 
+D_1998_23       byte    %8.0g                 
+D_1998_22       byte    %8.0g                 
+D_1999_25       byte    %8.0g                 
+D_1999_24       byte    %8.0g                 
+D_1999_23       byte    %8.0g                 
+D_2000_26       byte    %8.0g                 
+D_2000_25       byte    %8.0g                 
+D_2000_24       byte    %8.0g                 
+D_2001_27       byte    %8.0g                 
+D_2001_26       byte    %8.0g                 
+D_2001_25       byte    %8.0g                 
+D_2002_28       byte    %8.0g                 
+D_2002_27       byte    %8.0g                 
+D_2002_26       byte    %8.0g                 
+D_2003_29       byte    %8.0g                 
+D_2003_28       byte    %8.0g                 
+D_2003_27       byte    %8.0g                 
+D_2004_30       byte    %8.0g                 
+D_2004_29       byte    %8.0g                 
+D_2004_28       byte    %8.0g                 
+D_2005_31       byte    %8.0g                 
+D_2005_30       byte    %8.0g                 
+D_2005_29       byte    %8.0g                 
+D_2006_32       byte    %8.0g                 
+D_2006_31       byte    %8.0g                 
+D_2006_30       byte    %8.0g                 
+D_2007_33       byte    %8.0g                 
+D_2007_32       byte    %8.0g                 
+D_2007_31       byte    %8.0g                 
+age2            float   %9.0g                 
+age3            float   %9.0g                 
+age4            float   %9.0g                 
+-------------------------------------------------------------------------------
+Sorted by:  pid  year
 
-end of do-file
-r(111);
+. 
+.         xi: xtreg real_annual_income i.year age age2 age3 age4 D_1976_2 - D_2
+> 007_31 if sex==1, fe
+i.year            _Iyear_1972-2008    (naturally coded; _Iyear_1972 omitted)

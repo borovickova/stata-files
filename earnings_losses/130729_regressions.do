@@ -201,14 +201,15 @@ forval yy = 1982/1985{
 	drop _merge
 	save "`filepath'/regression_annual_income_year1982.dta" , replace
 */	
-	
+
+/*	
 	use "`filepath'/regression_annual_income_year1982.dta" , clear
 	gen byte treatmet =1 if TG4davis_men==1 | TG4davis_women==1
 	
 	* GENERATE Dtk dummies
 	
 	forval tt = 1976/2007{
-		local k  = `tt'-1982+8
+		local k  = `tt'- 1982+8
 		local k1 = `tt'-(1982+1)+8
 		local k2 = `tt'-(1982+2)+8
 		
@@ -216,27 +217,36 @@ forval yy = 1982/1985{
 		gen byte D_`tt'_`k1' = 0
 		gen byte D_`tt'_`k2' = 0
 		
-		local tk = `tt'+`k'-8
-		local tk1 = `tt'+`k1'-8
-		local tk2 = `tt'+`k2'-8
+		local tk  = `tt'-`k'+8
+		local tk1 = `tt'-`k1'+8
+		local tk2 = `tt'-`k2'+8
 		
 		replace D_`tt'_`k'  = 1 if year==`tt' & year_mass_layoff == `tk'  & treatmet == 1
 		replace D_`tt'_`k1' = 1 if year==`tt' & year_mass_layoff == `tk1' & treatmet == 1
 		replace D_`tt'_`k2' = 1 if year==`tt' & year_mass_layoff == `tk2' & treatmet == 1
 	}
+	save  "`filepath'/regression_annual_income_year1982_vars.dta", replace
+
+	use "`filepath'/regression_annual_income_year1982_vars.dta"
 
 	gen age2 = age^2
-	gen age2 = age^3
-	gen age2 = age^4
+	gen age3 = age^3
+	gen age4 = age^4
 
+	save  "`filepath'/regression_annual_income_year1982_vars.dta", replace
 	*gen mean_income = .
 	*replace mean_income = 
 	sort pid year
 	xtset pid year
-	xi: xtreg real_annual_income i.year age age2 age3 age4 D_1976_2 - D_1976_31 if sex==1, fe
-	xi: xtreg real_annual_income_coded i.year age age2 age3 age4 D_1976_2 - D_1976_31 if sex==1, fe
+	save  "`filepath'/regression_annual_income_year1982_vars.dta", replace
+*/
+	use "`filepath'/regression_annual_income_year1982_vars.dta"
+	describe, fullnames
+
+	xi: xtreg real_annual_income i.year age age2 age3 age4 D_1976_2 - D_2007_31 if sex==1, fe
+	xi: xtreg real_annual_income_coded i.year age age2 age3 age4 D_1976_2 - D_2007_31 if sex==1, fe
 	
-	xi: xtreg real_annual_income i.year age age2 age3 age4 D_1976_2 - D_1976_31 if sex==2, fe
-	xi: xtreg real_annual_income_coded i.year age age2 age3 age4 D_1976_2 - D_1976_31 if sex==2, fe
+	xi: xtreg real_annual_income i.year age age2 age3 age4 D_1976_2 - D_2007_31 if sex==2, fe
+	xi: xtreg real_annual_income_coded i.year age age2 age3 age4 D_1976_2 - D_2007_31 if sex==2, fe
 	
 
