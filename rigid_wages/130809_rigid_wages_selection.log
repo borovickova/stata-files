@@ -1,0 +1,252 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   11.0   Copyright 1984-2009
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 8-core Stata network perpetual license:
+       Serial number:  50110549827
+         Licensed to:  High Performance Computing
+                       New York University
+
+Notes:
+      1.  (-m# option or -set memory-) 50.00 MB allocated to data
+      2.  (-v# option or -set maxvar-) 5000 maximum variables
+      3.  Command line editing disabled
+      4.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130809_rigid_wages_selection.do 
+
+. /*
+> set memory 14000m
+> local filepath "/scratch/kb103/stata/labor_flows"
+> use "`filepath'/quarterly_emp_hire_sep_ALL_reshaped.dta"
+> 
+> drop if empQ==.
+> drop if empQ==0
+> keep if quarter==1
+> 
+> keep fid year empQ
+> sort fid year
+> gen int x1 = 0
+> replace x1 = 1 if empQ > 30
+> by fid: egen s30 = total(x1)
+> 
+> keep if x1>10
+> 
+> merge m:1 fid using "`filepath'/fid_industry.dta"
+> keep if _merge==3
+> 
+> save "/scratch/kb103/stata/rigid_wages/sample_firm.dta", replace
+> */
+. set memory 14000m
+
+Current memory allocation
+-------------------------
+
+                    current                                 memory usage
+    settable          value     description                 (1M = 1024k)
+    --------------------------------------------------------------------
+    set maxvar         5000     max. variables allowed           1.790M
+    set memory        14000M    max. data space             14,000.000M
+    set matsize         400     max. RHS vars in models          1.254M
+                                                            -----------
+                                                            14,003.044M
+
+. local filepath "/scratch/kb103/stata/earnings_losses"
+
+. local filepath2 "/scratch/kb103/stata/rigid_wages"
+
+. 
+. forval jj = 1/1{
+  2. forval ii = 6/10{
+  3.         use "`filepath'/employed_UStype_`ii'_`jj'.dta", clear
+  4.         sort fid year
+  5.         merge m:1 fid year using "`filepath2'/firm_selection_firms.dta"
+  6.         keep if _merge==3
+  7.         keep pid
+  8.         sort pid
+  9.         by pid: gen index = _n
+ 10.         keep if index==1
+ 11.         drop index
+ 12.         save "`filepath2'/_select_pidonly_`ii'_`jj'.dta", replace
+ 13.         
+.         use "`filepath'/employed_UStype_`ii'_`jj'.dta", clear
+ 14.         merge m:1 pid using "`filepath2'/_select_pidonly_`ii'_`jj'.dta"
+ 15.         keep if _merge==3
+ 16.         drop _merge
+ 17.         save "`filepath2'/indiv_select_`ii'_`jj'.dta", replace
+ 18. }
+ 19. }
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,158,519
+        from master                 4,158,509  (_merge==1)
+        from using                         10  (_merge==2)
+
+    matched                               588  (_merge==3)
+    -----------------------------------------
+(4158519 observations deleted)
+(422 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/_select_pidonly_6_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/_select_pidonly_6_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,155,305
+        from master                 4,155,305  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             3,792  (_merge==3)
+    -----------------------------------------
+(4155305 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/indiv_select_6_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/indiv_select_6_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,160,889
+        from master                 4,160,869  (_merge==1)
+        from using                         20  (_merge==2)
+
+    matched                               667  (_merge==3)
+    -----------------------------------------
+(4160889 observations deleted)
+(495 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/_select_pidonly_7_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/_select_pidonly_7_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,157,601
+        from master                 4,157,601  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             3,935  (_merge==3)
+    -----------------------------------------
+(4157601 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/indiv_select_7_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/indiv_select_7_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,160,486
+        from master                 4,160,480  (_merge==1)
+        from using                          6  (_merge==2)
+
+    matched                               543  (_merge==3)
+    -----------------------------------------
+(4160486 observations deleted)
+(407 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/_select_pidonly_8_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/_select_pidonly_8_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,158,390
+        from master                 4,158,390  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             2,633  (_merge==3)
+    -----------------------------------------
+(4158390 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/indiv_select_8_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/indiv_select_8_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,173,157
+        from master                 4,173,126  (_merge==1)
+        from using                         31  (_merge==2)
+
+    matched                               553  (_merge==3)
+    -----------------------------------------
+(4173157 observations deleted)
+(402 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/_select_pidonly_9_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/_select_pidonly_9_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,170,232
+        from master                 4,170,232  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             3,447  (_merge==3)
+    -----------------------------------------
+(4170232 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/indiv_select_9_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/indiv_select_9_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,171,550
+        from master                 4,171,541  (_merge==1)
+        from using                          9  (_merge==2)
+
+    matched                               663  (_merge==3)
+    -----------------------------------------
+(4171550 observations deleted)
+(489 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/_select_pidonly_10_1.dta not found
+> )
+file /scratch/kb103/stata/rigid_wages/_select_pidonly_10_1.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,168,177
+        from master                 4,168,177  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             4,027  (_merge==3)
+    -----------------------------------------
+(4168177 observations deleted)
+(note: file /scratch/kb103/stata/rigid_wages/indiv_select_10_1.dta not found)
+file /scratch/kb103/stata/rigid_wages/indiv_select_10_1.dta saved
+
+. 
+. use "`filepath2'/indiv_select_1_0.dta"
+
+. append using "`filepath2'/indiv_select_1_1.dta" 
+(label lflabel already defined)
+
+. forval jj = 0/1{
+  2. forval ii = 2/10{
+  3.  append using "`filepath2'/indiv_select_`ii'_`jj'.dta"
+  4. }
+  5. }
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+(label lflabel already defined)
+
+. 
+. save "`filepath2'/indiv_select_all.dta", replace
+(note: file /scratch/kb103/stata/rigid_wages/indiv_select_all.dta not found)
+file /scratch/kb103/stata/rigid_wages/indiv_select_all.dta saved
+
+. 
+end of do-file
