@@ -81,7 +81,7 @@ Note:  Your site can add messages to the introduction by editing the file
 . 
 . ***** CREATE FILES FOR EACH YEAR ******************************
 . 
-. forval yy = 1976/2004{
+. forval yy = 2001/2004{
   2.         
 .         * TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
 .         use "`filepath'/control_treatment_ind_all.dta", clear
@@ -147,1192 +147,25 @@ Note:  Your site can add messages to the introduction by editing the file
  49.         save "`filepath'/EL_Davis_ind_year`yy'.dta", replace
  50.         
 . }
-(28213874 observations deleted)
-(152 observations deleted)
-(1480 observations deleted)
-(20907 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1976.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1976.dta saved
-(4547 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1976
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1976.dta sa
-> ved
-(794337 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1976.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1976.
-> dta saved
-(530684 observations deleted)
-(0 observations deleted)
-(71 observations deleted)
-(349 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1976.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1976.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1976.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1976.dta saved
-(11635 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 76.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1976.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        20,630,205  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1976.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1976.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           284,872  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1976.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1976.dta saved
-(28214172 observations deleted)
-(333 observations deleted)
-(1430 observations deleted)
-(19913 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1977.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1977.dta saved
-(4479 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1977
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1977.dta sa
-> ved
-(794970 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1977.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1977.
-> dta saved
-(533931 observations deleted)
-(0 observations deleted)
-(72 observations deleted)
-(209 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1977.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1977.dta saved
-(2 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1977.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1977.dta saved
-(8526 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 77.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1977.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        21,325,382  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1977.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1977.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           232,494  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1977.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1977.dta saved
-(28191954 observations deleted)
-(277 observations deleted)
-(1501 observations deleted)
-(21783 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1978.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1978.dta saved
-(5296 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1978
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1978.dta sa
-> ved
-(814486 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1978.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1978.
-> dta saved
-(532725 observations deleted)
-(0 observations deleted)
-(134 observations deleted)
-(337 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1978.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1978.dta saved
-(2 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1978.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1978.dta saved
-(9542 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 78.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1978.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        22,479,420  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1978.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1978.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           270,069  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1978.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1978.dta saved
-(28186603 observations deleted)
-(325 observations deleted)
-(1521 observations deleted)
-(22687 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1979.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1979.dta saved
-(5062 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1979
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1979.dta sa
-> ved
-(819099 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1979.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1979.
-> dta saved
-(531213 observations deleted)
-(0 observations deleted)
-(108 observations deleted)
-(222 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1979.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1979.dta saved
-(2 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1979.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1979.dta saved
-(11195 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 79.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1979.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        23,202,942  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1979.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1979.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           323,666  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1979.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1979.dta saved
-(28186613 observations deleted)
-(231 observations deleted)
-(1806 observations deleted)
-(23837 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1980.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1980.dta saved
-(5082 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1980
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1980.dta sa
-> ved
-(817728 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1980.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1980.
-> dta saved
-(531270 observations deleted)
-(0 observations deleted)
-(86 observations deleted)
-(246 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1980.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1980.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1980.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1980.dta saved
-(11137 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 80.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1980.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        23,730,762  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1980.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1980.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           335,399  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1980.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1980.dta saved
-(28162257 observations deleted)
-(279 observations deleted)
-(1808 observations deleted)
-(24867 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1981.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1981.dta saved
-(5243 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1981
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1981.dta sa
-> ved
-(840843 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1981.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1981.
-> dta saved
-(530010 observations deleted)
-(0 observations deleted)
-(101 observations deleted)
-(419 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1981.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1981.dta saved
-(2 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1981.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1981.dta saved
-(12208 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 81.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1981.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        24,953,933  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1981.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1981.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           375,768  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1981.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1981.dta saved
-(28131612 observations deleted)
-(856 observations deleted)
-(2035 observations deleted)
-(27851 observations deleted)
-file /scratch/kb103/stata/earnings_losses/temp_1982.dta saved
-(5366 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1982.dta sa
-> ved
-(867577 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1982.
-> dta saved
-(528628 observations deleted)
-(0 observations deleted)
-(161 observations deleted)
-(437 observations deleted)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1982.dta saved
-(4 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1982.dta saved
-(13511 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1982.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        26,267,513  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1982.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           414,228  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1982.dta saved
-(28109017 observations deleted)
-(611 observations deleted)
-(2394 observations deleted)
-(28882 observations deleted)
-file /scratch/kb103/stata/earnings_losses/temp_1983.dta saved
-(5713 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1983.dta sa
-> ved
-(888680 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1983.
-> dta saved
-(530300 observations deleted)
-(0 observations deleted)
-(143 observations deleted)
-(466 observations deleted)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1983.dta saved
-(4 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1983.dta saved
-(11828 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1983.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        27,348,897  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1983.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           357,446  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1983.dta saved
-(28111760 observations deleted)
-(643 observations deleted)
-(2370 observations deleted)
-(29395 observations deleted)
-file /scratch/kb103/stata/earnings_losses/temp_1984.dta saved
-(5874 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1984.dta sa
-> ved
-(885255 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1984.
-> dta saved
-(532233 observations deleted)
-(0 observations deleted)
-(94 observations deleted)
-(288 observations deleted)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1984.dta saved
-(4 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1984.dta saved
-(10122 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1984.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        27,581,912  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1984.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           313,747  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1984.dta saved
-(28110717 observations deleted)
-(611 observations deleted)
-(2290 observations deleted)
-(31270 observations deleted)
-file /scratch/kb103/stata/earnings_losses/temp_1985.dta saved
-(6113 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1985.dta sa
-> ved
-(884296 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1985.
-> dta saved
-(534717 observations deleted)
-(0 observations deleted)
-(64 observations deleted)
-(275 observations deleted)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1985.dta saved
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1985.dta saved
-(7683 observations deleted)
-(note: dataset contains 0 observations)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1985.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        27,841,719  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1985.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           250,205  (_merge==3)
-    -----------------------------------------
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1985.dta saved
-(28110961 observations deleted)
-(161 observations deleted)
-(1968 observations deleted)
-(30532 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1986.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1986.dta saved
-(6013 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1986
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1986.dta sa
-> ved
-(885662 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1986.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1986.
-> dta saved
-(532497 observations deleted)
-(0 observations deleted)
-(57 observations deleted)
-(464 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1986.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1986.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1986.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1986.dta saved
-(9721 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 86.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1986.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,121,583  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1986.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1986.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           318,281  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1986.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1986.dta saved
-(28121373 observations deleted)
-(550 observations deleted)
-(2047 observations deleted)
-(32046 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1987.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1987.dta saved
-(6208 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1987
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1987.dta sa
-> ved
-(873073 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1987.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1987.
-> dta saved
-(531420 observations deleted)
-(0 observations deleted)
-(174 observations deleted)
-(369 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1987.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1987.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1987.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1987.dta saved
-(10776 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 87.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1987.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        27,882,768  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1987.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1987.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           342,070  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1987.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1987.dta saved
-(28104508 observations deleted)
-(129 observations deleted)
-(1890 observations deleted)
-(30496 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1988.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1988.dta saved
-(6251 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1988
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1988.dta sa
-> ved
-(892023 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1988.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1988.
-> dta saved
-(526635 observations deleted)
-(0 observations deleted)
-(230 observations deleted)
-(414 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1988.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1988.dta saved
-(4 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1988.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1988.dta saved
-(15458 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 88.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1988.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,635,710  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1988.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1988.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           478,452  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1988.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1988.dta saved
-(28140415 observations deleted)
-(186 observations deleted)
-(1689 observations deleted)
-(29102 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1989.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1989.dta saved
-(6054 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1989
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1989.dta sa
-> ved
-(857851 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1989.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1989.
-> dta saved
-(510219 observations deleted)
-(0 observations deleted)
-(229 observations deleted)
-(274 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1989.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1989.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1989.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1989.dta saved
-(32017 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 89.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1989.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        27,742,030  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1989.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1989.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                         1,048,907  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1989.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1989.dta saved
-(28136004 observations deleted)
-(174 observations deleted)
-(1725 observations deleted)
-(29727 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1990.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1990.dta saved
-(5967 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1990
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1990.dta sa
-> ved
-(861700 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1990.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1990.
-> dta saved
-(527482 observations deleted)
-(0 observations deleted)
-(141 observations deleted)
-(233 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1990.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1990.dta saved
-(2 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1990.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1990.dta saved
-(14882 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 90.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1990.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,080,737  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1990.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1990.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           486,157  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1990.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1990.dta saved
-(28129728 observations deleted)
-(303 observations deleted)
-(1573 observations deleted)
-(31137 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1991.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1991.dta saved
-(5782 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1991
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1991.dta sa
-> ved
-(866774 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1991.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1991.
-> dta saved
-(526200 observations deleted)
-(0 observations deleted)
-(137 observations deleted)
-(263 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1991.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1991.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1991.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1991.dta saved
-(16139 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 91.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1991.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,264,608  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1991.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1991.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           520,979  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1991.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1991.dta saved
-(28110350 observations deleted)
-(375 observations deleted)
-(2051 observations deleted)
-(31010 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1992.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1992.dta saved
-(6095 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1992
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1992.dta sa
-> ved
-(885416 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1992.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1992.
-> dta saved
-(524427 observations deleted)
-(0 observations deleted)
-(161 observations deleted)
-(407 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1992.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1992.dta saved
-(6 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1992.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1992.dta saved
-(17741 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 92.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1992.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,695,684  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1992.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1992.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           562,494  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1992.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1992.dta saved
-(28087390 observations deleted)
-(186 observations deleted)
-(1945 observations deleted)
-(32970 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1993.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1993.dta saved
-(6416 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1993
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1993.dta sa
-> ved
-(906390 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1993.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1993.
-> dta saved
-(524260 observations deleted)
-(0 observations deleted)
-(218 observations deleted)
-(339 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1993.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1993.dta saved
-(6 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1993.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1993.dta saved
-(17919 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 93.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1993.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        29,100,530  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1993.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1993.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           554,152  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1993.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1993.dta saved
-(28090142 observations deleted)
-(287 observations deleted)
-(1895 observations deleted)
-(30434 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1994.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1994.dta saved
-(6696 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1994
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1994.dta sa
-> ved
-(905843 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1994.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1994.
-> dta saved
-(520388 observations deleted)
-(0 observations deleted)
-(209 observations deleted)
-(504 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1994.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1994.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1994.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1994.dta saved
-(21638 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 94.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1994.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,855,787  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1994.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1994.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           659,265  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1994.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1994.dta saved
-(28078329 observations deleted)
-(291 observations deleted)
-(1858 observations deleted)
-(30716 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1995.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1995.dta saved
-(6661 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1995
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1995.dta sa
-> ved
-(917442 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1995.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1995.
-> dta saved
-(525747 observations deleted)
-(0 observations deleted)
-(215 observations deleted)
-(321 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1995.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1995.dta saved
-(2 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1995.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1995.dta saved
-(16455 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 95.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1995.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,946,283  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1995.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1995.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           479,566  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1995.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1995.dta saved
-(28051547 observations deleted)
-(519 observations deleted)
-(1825 observations deleted)
-(31861 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1996.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1996.dta saved
-(6869 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1996
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1996.dta sa
-> ved
-(942676 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1996.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1996.
-> dta saved
-(520950 observations deleted)
-(0 observations deleted)
-(147 observations deleted)
-(401 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1996.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1996.dta saved
-(38 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1996.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1996.dta saved
-(21222 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 96.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1996.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        29,392,197  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1996.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1996.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           618,910  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1996.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1996.dta saved
-(28049396 observations deleted)
-(451 observations deleted)
-(1710 observations deleted)
-(32065 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1997.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1997.dta saved
-(7576 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1997
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1997.dta sa
-> ved
-(944099 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1997.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1997.
-> dta saved
-(524541 observations deleted)
-(0 observations deleted)
-(122 observations deleted)
-(384 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1997.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1997.dta saved
-(52 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1997.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1997.dta saved
-(17666 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 97.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1997.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,989,010  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1997.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1997.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           497,900  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1997.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1997.dta saved
-(28063092 observations deleted)
-(215 observations deleted)
-(1592 observations deleted)
-(31455 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1998.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1998.dta saved
-(6242 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1998
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1998.dta sa
-> ved
-(932701 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1998.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1998.
-> dta saved
-(521896 observations deleted)
-(0 observations deleted)
-(136 observations deleted)
-(431 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1998.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1998.dta saved
-(2 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1998.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1998.dta saved
-(20275 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 98.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1998.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        28,254,729  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1998.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1998.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           570,999  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1998.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1998.dta saved
-(28068410 observations deleted)
-(555 observations deleted)
-(1775 observations deleted)
-(28384 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_1999.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_1999.dta saved
-(6315 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1999
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year1999.dta sa
-> ved
-(929858 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar1999.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year1999.
-> dta saved
-(526877 observations deleted)
-(0 observations deleted)
-(205 observations deleted)
-(405 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_1999.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_1999.dta saved
-(0 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1999.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year1999.dta saved
-(15252 observations deleted)
-(note: dataset contains 0 observations)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year19
-> 99.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year1999.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        27,683,121  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year1999.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year1999.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           426,309  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1999.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year1999.dta saved
-(28073457 observations deleted)
-(693 observations deleted)
-(1772 observations deleted)
-(28597 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_2000.dta not found)
-file /scratch/kb103/stata/earnings_losses/temp_2000.dta saved
-(6492 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2000
-> .dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2000.dta sa
-> ved
-(924286 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar2000.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year2000.
-> dta saved
-(527672 observations deleted)
-(0 observations deleted)
-(160 observations deleted)
-(445 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_2000.dta not found)
-file /scratch/kb103/stata/earnings_losses/Dtemp_2000.dta saved
-(4 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2000.dta
->  not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2000.dta saved
-(14460 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year20
-> 00.dta not found)
-file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year2000.dta 
-> saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                        27,001,827  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year2000.dta not found)
-file /scratch/kb103/stata/earnings_losses/EL_ind_year2000.dta saved
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                           415,376  (_merge==3)
-    -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2000.dta not 
-> found)
-file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2000.dta saved
 (28077850 observations deleted)
 (607 observations deleted)
 (1874 observations deleted)
 (28686 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/temp_2001.dta not found)
 file /scratch/kb103/stata/earnings_losses/temp_2001.dta saved
 (6198 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2001
-> .dta not found)
 file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2001.dta sa
 > ved
 (920082 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
-> ar2001.dta not found)
 file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year2001.
 > dta saved
 (527165 observations deleted)
 (0 observations deleted)
 (186 observations deleted)
 (488 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/Dtemp_2001.dta not found)
 file /scratch/kb103/stata/earnings_losses/Dtemp_2001.dta saved
 (14 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2001.dta
->  not found)
 file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2001.dta saved
 (14893 observations deleted)
-(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year20
-> 01.dta not found)
 file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year2001.dta 
 > saved
 
@@ -1341,5 +174,1387 @@ file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year2001.dta
     not matched                             0
     matched                        26,249,082  (_merge==3)
     -----------------------------------------
-(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year2001.dta not found)
 file /scratch/kb103/stata/earnings_losses/EL_ind_year2001.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           422,285  (_merge==3)
+    -----------------------------------------
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2001.dta not 
+> found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2001.dta saved
+(28104932 observations deleted)
+(856 observations deleted)
+(1910 observations deleted)
+(29190 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/temp_2002.dta not found)
+file /scratch/kb103/stata/earnings_losses/temp_2002.dta saved
+(4976 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2002
+> .dta not found)
+file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2002.dta sa
+> ved
+(893433 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
+> ar2002.dta not found)
+file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year2002.
+> dta saved
+(523981 observations deleted)
+(0 observations deleted)
+(210 observations deleted)
+(512 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/Dtemp_2002.dta not found)
+file /scratch/kb103/stata/earnings_losses/Dtemp_2002.dta saved
+(2 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2002.dta
+>  not found)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2002.dta saved
+(18035 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year20
+> 02.dta not found)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year2002.dta 
+> saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                        24,845,546  (_merge==3)
+    -----------------------------------------
+(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year2002.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_ind_year2002.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           487,294  (_merge==3)
+    -----------------------------------------
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2002.dta not 
+> found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2002.dta saved
+(28115180 observations deleted)
+(736 observations deleted)
+(2046 observations deleted)
+(31314 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/temp_2003.dta not found)
+file /scratch/kb103/stata/earnings_losses/temp_2003.dta saved
+(4678 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2003
+> .dta not found)
+file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2003.dta sa
+> ved
+(881343 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
+> ar2003.dta not found)
+file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year2003.
+> dta saved
+(521432 observations deleted)
+(0 observations deleted)
+(179 observations deleted)
+(684 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/Dtemp_2003.dta not found)
+file /scratch/kb103/stata/earnings_losses/Dtemp_2003.dta saved
+(2 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2003.dta
+>  not found)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2003.dta saved
+(20443 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year20
+> 03.dta not found)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year2003.dta 
+> saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                        23,761,370  (_merge==3)
+    -----------------------------------------
+(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year2003.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_ind_year2003.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           540,520  (_merge==3)
+    -----------------------------------------
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2003.dta not 
+> found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2003.dta saved
+(28107919 observations deleted)
+(642 observations deleted)
+(2068 observations deleted)
+(31170 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/temp_2004.dta not found)
+file /scratch/kb103/stata/earnings_losses/temp_2004.dta saved
+(4620 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2004
+> .dta not found)
+file /scratch/kb103/stata/earnings_losses/control_treatment_ind_year2004.dta sa
+> ved
+(888878 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_ye
+> ar2004.dta not found)
+file /scratch/kb103/stata/earnings_losses/control_treatment_ind_multi_year2004.
+> dta saved
+(513436 observations deleted)
+(0 observations deleted)
+(160 observations deleted)
+(821 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/Dtemp_2004.dta not found)
+file /scratch/kb103/stata/earnings_losses/Dtemp_2004.dta saved
+(181 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2004.dta
+>  not found)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_year2004.dta saved
+(28231 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year20
+> 04.dta not found)
+file /scratch/kb103/stata/earnings_losses/control_Davis_ind_multi_year2004.dta 
+> saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                        23,180,943  (_merge==3)
+    -----------------------------------------
+(note: file /scratch/kb103/stata/earnings_losses/EL_ind_year2004.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_ind_year2004.dta saved
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                           735,157  (_merge==3)
+    -----------------------------------------
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2004.dta not 
+> found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_ind_year2004.dta saved
+
+. 
+. 
+. * GENERATE ANNUAL INCOME
+. forval yy = 1976/2004{
+  2.         
+.         * TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
+.         use "`filepath'/EL_ind_year`yy'.dta"
+  3.         drop if income==.
+  4.         gen real_annual_income_T = income/30*btag/(cpi/100)
+  5.         gen real_annual_income_coded_T = income_coded/30*btag/(cpi/100)
+  6. 
+.         sort pid year
+  7.         by pid year: gen int index = _n
+  8.         by pid year: egen real_annual_income = total(real_annual_income_T)
+  9.         by pid year: egen real_annual_income_coded = total(real_annual_inc
+> ome_coded_T)
+ 10.         keep if index == 1
+ 11.         drop index
+ 12.         keep year pid real_annual_income real_annual_income_coded day* sex
+>  age CG* TG* fid_ML
+ 13.         gen int year_mass_layoff = `yy'
+ 14.         save "`filepath'/EL_annual_income_year`yy'.dta", replace
+ 15.         
+.         * TREATMENT DAVIS MEASURE
+.         
+.         use "`filepath'/EL_Davis_ind_year`yy'.dta", clear
+ 16.         drop if income==.
+ 17.         gen real_annual_income_T = income/30*btag/(cpi/100)
+ 18.         gen real_annual_income_coded_T = income_coded/30*btag/(cpi/100)
+ 19. 
+.         sort pid year
+ 20.         by pid year: gen int index = _n
+ 21.         by pid year: egen real_annual_income = total(real_annual_income_T)
+ 22.         by pid year: egen real_annual_income_coded = total(real_annual_inc
+> ome_coded_T)
+ 23.         keep if index == 1
+ 24.         drop index
+ 25.         keep year pid real_annual_income real_annual_income_coded day* sex
+>  age TG* fid_ML year_mass_layoff
+ 26. 
+.         save "`filepath'/EL_Davis_annual_income_year`yy'.dta", replace       
+>    
+ 27. }
+(263657 observations deleted)
+(1933137 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1976.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1976.dta saved
+(5923 observations deleted)
+(56257 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year197
+> 6.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1976.dta s
+> aved
+(273751 observations deleted)
+(2015964 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1977.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1977.dta saved
+(5660 observations deleted)
+(45881 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year197
+> 7.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1977.dta s
+> aved
+(296019 observations deleted)
+(2186068 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1978.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1978.dta saved
+(4943 observations deleted)
+(56891 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year197
+> 8.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1978.dta s
+> aved
+(311633 observations deleted)
+(2285120 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1979.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1979.dta saved
+(5514 observations deleted)
+(65426 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year197
+> 9.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1979.dta s
+> aved
+(321734 observations deleted)
+(2366463 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1980.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1980.dta saved
+(8020 observations deleted)
+(63338 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year198
+> 0.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1980.dta s
+> aved
+(344060 observations deleted)
+(2553648 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1981.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1981.dta saved
+(9465 observations deleted)
+(72655 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year198
+> 1.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1981.dta s
+> aved
+(370453 observations deleted)
+(2772240 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1982.dta saved
+(13741 observations deleted)
+(84261 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1982.dta s
+> aved
+(399733 observations deleted)
+(2950484 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1983.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1983.dta saved
+(6680 observations deleted)
+(66545 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1983.dta s
+> aved
+(410000 observations deleted)
+(2994791 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1984.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1984.dta saved
+(6267 observations deleted)
+(56086 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1984.dta s
+> aved
+(417456 observations deleted)
+(3038499 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1985.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1985.dta saved
+(4813 observations deleted)
+(50200 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1985.dta s
+> aved
+(430198 observations deleted)
+(3111369 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1986.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1986.dta saved
+(5294 observations deleted)
+(60715 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year198
+> 6.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1986.dta s
+> aved
+(444358 observations deleted)
+(3139235 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1987.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1987.dta saved
+(6634 observations deleted)
+(62009 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year198
+> 7.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1987.dta s
+> aved
+(458773 observations deleted)
+(3258032 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1988.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1988.dta saved
+(9349 observations deleted)
+(75810 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year198
+> 8.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1988.dta s
+> aved
+(456060 observations deleted)
+(3210669 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1989.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1989.dta saved
+(12404 observations deleted)
+(133647 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year198
+> 9.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1989.dta s
+> aved
+(468218 observations deleted)
+(3305728 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1990.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1990.dta saved
+(10973 observations deleted)
+(79395 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 0.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1990.dta s
+> aved
+(478642 observations deleted)
+(3424041 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1991.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1991.dta saved
+(11965 observations deleted)
+(86740 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 1.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1991.dta s
+> aved
+(497223 observations deleted)
+(3563701 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1992.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1992.dta saved
+(11655 observations deleted)
+(95449 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 2.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1992.dta s
+> aved
+(513091 observations deleted)
+(3665142 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1993.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1993.dta saved
+(12372 observations deleted)
+(104507 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 3.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1993.dta s
+> aved
+(515223 observations deleted)
+(3658866 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1994.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1994.dta saved
+(11724 observations deleted)
+(107768 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 4.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1994.dta s
+> aved
+(524717 observations deleted)
+(3695226 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1995.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1995.dta saved
+(11718 observations deleted)
+(92493 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 5.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1995.dta s
+> aved
+(540786 observations deleted)
+(3830073 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1996.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1996.dta saved
+(12441 observations deleted)
+(117854 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 6.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1996.dta s
+> aved
+(544678 observations deleted)
+(3795570 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1997.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1997.dta saved
+(10186 observations deleted)
+(104670 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 7.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1997.dta s
+> aved
+(539779 observations deleted)
+(3714780 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1998.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1998.dta saved
+(13145 observations deleted)
+(103600 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 8.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1998.dta s
+> aved
+(538723 observations deleted)
+(3627622 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1999.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year1999.dta saved
+(10117 observations deleted)
+(80739 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year199
+> 9.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year1999.dta s
+> aved
+(530305 observations deleted)
+(3572184 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2000.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2000.dta saved
+(9272 observations deleted)
+(82686 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year200
+> 0.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year2000.dta s
+> aved
+(524786 observations deleted)
+(3513812 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2001.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2001.dta saved
+(12125 observations deleted)
+(90434 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year200
+> 1.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year2001.dta s
+> aved
+(513113 observations deleted)
+(3417901 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2002.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2002.dta saved
+(14380 observations deleted)
+(97485 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year200
+> 2.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year2002.dta s
+> aved
+(502213 observations deleted)
+(3323951 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2003.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2003.dta saved
+(14836 observations deleted)
+(107525 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year200
+> 3.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year2003.dta s
+> aved
+(501381 observations deleted)
+(3288537 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2004.dta 
+> not found)
+file /scratch/kb103/stata/earnings_losses/EL_annual_income_year2004.dta saved
+(14868 observations deleted)
+(134425 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year200
+> 4.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year2004.dta s
+> aved
+
+.         
+. * CREATE FILES FOR REPLICATING DAVIS REGRESSIONS
+. 
+. forval yy = 1976/2004{  
+  2.         * DEAL WITH DUPLICATE OBSERVATIONS - IF A WORKER IS IN MORE THAN O
+> NE TREATMENT/CONTROL GROUP
+.         
+.         * CONTROL GROUP
+.         use "`filepath'/EL_annual_income_year`yy'.dta"
+  3.         keep if CG3_men==1 | CG3_women==1
+  4.         keep pid CG3*
+  5.         by pid: gen int index = _n
+  6.         keep if index==1
+  7.         drop index
+  8.         saveold "`filepath'/EL_pid_CG3`yy'.dta", replace
+  9. 
+.         * TREATMENT GROUP
+.         local endy = `yy'+2
+ 10.         forval yy1 = `yy'/`endy'{
+ 11.                 use "`filepath'/EL_Davis_annual_income_year`yy1'.dta"
+ 12.                 by pid: gen int index = _n
+ 13.                 keep if index == 1
+ 14.                 drop index
+ 15.                 keep pid TG* year_mass_layoff
+ 16.                 saveold "`filepath'/EL_pid_TG`yy1'.dta", replace
+ 17.         }
+ 18.         
+.         use "`filepath'/EL_pid_CG3`yy'.dta", clear
+ 19.         forval yy1 = `yy'/`endy'{
+ 20.                 append using "`filepath'/EL_pid_TG`yy1'.dta"
+ 21.         }
+ 22. 
+.         sort pid
+ 23.         by pid: gen int index = _n
+ 24.         by pid: egen int maxindex = max(index)
+ 25.         keep if maxindex>1
+ 26.         drop index maxindex
+ 27.         sort pid
+ 28.         by pid: gen int index = _n
+ 29.         keep if index==1
+ 30.         keep pid
+ 31.         save  "`filepath'/EL_`yy'_todrop.dta", replace
+ 32. 
+.         * CREATE A FILE FOR REGRESSION
+.         clear
+ 33.         use "`filepath'/EL_annual_income_year`yy'.dta" 
+ 34.         keep if CG3_men==1 | CG3_women==1
+ 35.         forval yy1 = `yy'/`endy'{
+ 36.                 append using "`filepath'/EL_Davis_annual_income_year`yy1'.
+> dta"
+ 37.         }
+ 38.         merge m:1 pid using "`filepath'/EL_`yy'_todrop.dta"
+ 39.         drop if _merge==3
+ 40.         drop _merge
+ 41.         save "`filepath'/xregression_annual_income_year`yy'.dta" , replace
+ 42. }       
+(3597862 observations deleted)
+(14194210 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31976.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31976.dta saved
+(211060 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1976.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1976.dta saved
+(172432 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1977.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1977.dta saved
+(198697 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1978.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1978.dta saved
+(670704 observations deleted)
+(163 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1976_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1976_todrop.dta saved
+(3597862 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    15,440,349
+        from master                15,440,349  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             7,080  (_merge==3)
+    -----------------------------------------
+(7080 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1976.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1976.dt
+> a saved
+(2829160 observations deleted)
+(15529812 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31977.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31977.dta saved
+(172432 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1977.dta saved
+(198697 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1978.dta saved
+(241536 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1979.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1979.dta saved
+(705442 observations deleted)
+(251 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1977_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1977_todrop.dta saved
+(2829160 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    16,836,807
+        from master                16,836,807  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            11,614  (_merge==3)
+    -----------------------------------------
+(11614 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1977.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1977.dt
+> a saved
+(3179634 observations deleted)
+(16135966 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31978.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31978.dta saved
+(198697 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1978.dta saved
+(241536 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1979.dta saved
+(252915 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1980.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1980.dta saved
+(712663 observations deleted)
+(462 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1978_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1978_todrop.dta saved
+(3179634 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    17,519,939
+        from master                17,519,939  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            22,762  (_merge==3)
+    -----------------------------------------
+(22762 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1978.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1978.dt
+> a saved
+(3069009 observations deleted)
+(16843705 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31979.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31979.dta saved
+(241536 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1979.dta saved
+(252915 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1980.dta saved
+(281452 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1981.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1981.dta saved
+(727477 observations deleted)
+(255 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1979_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1979_todrop.dta saved
+(3069009 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    18,335,455
+        from master                18,335,455  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            12,140  (_merge==3)
+    -----------------------------------------
+(12140 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1979.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1979.dt
+> a saved
+(3073380 observations deleted)
+(17276681 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31980.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31980.dta saved
+(252915 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1980.dta saved
+(281452 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1981.dta saved
+(302729 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1982.dta saved
+(728821 observations deleted)
+(251 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1980_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1980_todrop.dta saved
+(3073380 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    18,830,728
+        from master                18,830,728  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            12,372  (_merge==3)
+    -----------------------------------------
+(12372 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1980.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1980.dt
+> a saved
+(3605880 observations deleted)
+(17754909 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31981.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31981.dta saved
+(281452 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1981.dta saved
+(302729 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1982.dta saved
+(272404 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1983.dta saved
+(732480 observations deleted)
+(233 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1981_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1981_todrop.dta saved
+(3605880 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    19,332,404
+        from master                19,332,404  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            12,036  (_merge==3)
+    -----------------------------------------
+(12036 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1981.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1981.dt
+> a saved
+(3748490 observations deleted)
+(18659342 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31982.dta saved
+(302729 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1982.dta saved
+(272404 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1983.dta saved
+(241280 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1984.dta saved
+(752050 observations deleted)
+(183 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_1982_todrop.dta saved
+(3748490 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    20,218,651
+        from master                20,218,651  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             9,520  (_merge==3)
+    -----------------------------------------
+(9520 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1982.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1982.dt
+> a saved
+(3492432 observations deleted)
+(19758200 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31983.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31983.dta saved
+(272404 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1983.dta saved
+(241280 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1984.dta saved
+(187514 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1985.dta saved
+(777291 observations deleted)
+(183 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1983_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1983_todrop.dta saved
+(3492432 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    21,227,133
+        from master                21,227,133  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             9,922  (_merge==3)
+    -----------------------------------------
+(9922 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1983.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1983.dt
+> a saved
+(2979869 observations deleted)
+(20432982 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31984.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31984.dta saved
+(241280 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1984.dta saved
+(187514 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1985.dta saved
+(242554 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1986.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1986.dta saved
+(791532 observations deleted)
+(124 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1984_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1984_todrop.dta saved
+(2979869 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    21,889,064
+        from master                21,889,064  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             7,046  (_merge==3)
+    -----------------------------------------
+(7046 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1984.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1984.dt
+> a saved
+(3046149 observations deleted)
+(20578335 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31985.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31985.dta saved
+(187514 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1985.dta saved
+(242554 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1986.dta saved
+(262659 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1987.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1987.dta saved
+(789186 observations deleted)
+(129 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1985_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1985_todrop.dta saved
+(3046149 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,053,384
+        from master                22,053,384  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             7,122  (_merge==3)
+    -----------------------------------------
+(7122 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1985.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1985.dt
+> a saved
+(3130411 observations deleted)
+(20691189 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31986.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31986.dta saved
+(242554 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1986.dta saved
+(262659 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1987.dta saved
+(377844 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1988.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1988.dta saved
+(794037 observations deleted)
+(157 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1986_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1986_todrop.dta saved
+(3130411 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,360,057
+        from master                22,360,057  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             8,540  (_merge==3)
+    -----------------------------------------
+(8540 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1986.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1986.dt
+> a saved
+(3288439 observations deleted)
+(20271500 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31987.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31987.dta saved
+(262659 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1987.dta saved
+(377844 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1988.dta saved
+(870845 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1989.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1989.dta saved
+(797062 observations deleted)
+(201 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1987_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1987_todrop.dta saved
+(3288439 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,569,032
+        from master                22,569,032  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            11,280  (_merge==3)
+    -----------------------------------------
+(11280 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1987.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1987.dt
+> a saved
+(3814614 observations deleted)
+(20364432 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31988.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31988.dta saved
+(377844 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1988.dta saved
+(870845 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1989.dta saved
+(380915 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1990.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1990.dta saved
+(801787 observations deleted)
+(203 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1988_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1988_todrop.dta saved
+(3814614 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,784,811
+        from master                22,784,811  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            11,418  (_merge==3)
+    -----------------------------------------
+(11418 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1988.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1988.dt
+> a saved
+(3223598 observations deleted)
+(20124448 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31989.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31989.dta saved
+(870845 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1989.dta saved
+(380915 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1990.dta saved
+(406144 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1991.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1991.dta saved
+(788345 observations deleted)
+(964 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1989_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1989_todrop.dta saved
+(3223598 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,515,128
+        from master                22,515,128  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            57,494  (_merge==3)
+    -----------------------------------------
+(57494 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1989.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1989.dt
+> a saved
+(3863389 observations deleted)
+(19735068 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31990.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31990.dta saved
+(380915 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1990.dta saved
+(406144 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1991.dta saved
+(437657 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1992.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1992.dta saved
+(756662 observations deleted)
+(206 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1990_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1990_todrop.dta saved
+(3863389 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    21,705,009
+        from master                21,705,009  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            11,846  (_merge==3)
+    -----------------------------------------
+(11846 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1990.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1990.dt
+> a saved
+(3664258 observations deleted)
+(19982834 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31991.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31991.dta saved
+(406144 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1991.dta saved
+(437657 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1992.dta saved
+(419367 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1993.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1993.dta saved
+(766150 observations deleted)
+(226 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1991_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1991_todrop.dta saved
+(3664258 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    21,999,816
+        from master                21,999,816  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            12,788  (_merge==3)
+    -----------------------------------------
+(12788 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1991.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1991.dt
+> a saved
+(4009353 observations deleted)
+(19910396 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31992.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31992.dta saved
+(437657 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1992.dta saved
+(419367 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1993.dta saved
+(518138 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1994.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1994.dta saved
+(771893 observations deleted)
+(196 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1992_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1992_todrop.dta saved
+(4009353 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,046,971
+        from master                22,046,971  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            10,872  (_merge==3)
+    -----------------------------------------
+(10872 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1992.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1992.dt
+> a saved
+(3969661 observations deleted)
+(20217631 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31993.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31993.dta saved
+(419367 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1993.dta saved
+(518138 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1994.dta saved
+(358906 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1995.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1995.dta saved
+(790472 observations deleted)
+(262 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1993_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1993_todrop.dta saved
+(3969661 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,290,600
+        from master                22,290,600  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            14,437  (_merge==3)
+    -----------------------------------------
+(14437 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1993.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1993.dt
+> a saved
+(3713311 observations deleted)
+(20224055 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31994.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31994.dta saved
+(518138 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1994.dta saved
+(358906 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1995.dta saved
+(467421 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1996.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1996.dta saved
+(802942 observations deleted)
+(334 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1994_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1994_todrop.dta saved
+(3713311 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,354,404
+        from master                22,354,404  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            17,726  (_merge==3)
+    -----------------------------------------
+(17726 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1994.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1994.dt
+> a saved
+(3631463 observations deleted)
+(20336826 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31995.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31995.dta saved
+(358906 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1995.dta saved
+(467421 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1996.dta saved
+(365412 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1997.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1997.dta saved
+(812317 observations deleted)
+(505 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1995_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1995_todrop.dta saved
+(3631463 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,314,783
+        from master                22,314,783  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            27,108  (_merge==3)
+    -----------------------------------------
+(27108 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1995.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1995.dt
+> a saved
+(3935316 observations deleted)
+(20318392 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31996.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31996.dta saved
+(467421 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1996.dta saved
+(365412 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1997.dta saved
+(433983 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1998.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1998.dta saved
+(826017 observations deleted)
+(355 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1996_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1996_todrop.dta saved
+(3935316 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,393,571
+        from master                22,393,571  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            18,364  (_merge==3)
+    -----------------------------------------
+(18364 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1996.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1996.dt
+> a saved
+(3599621 observations deleted)
+(20270157 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31997.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31997.dta saved
+(365412 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1997.dta saved
+(433983 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1998.dta saved
+(320204 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG1999.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1999.dta saved
+(831403 observations deleted)
+(367 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1997_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1997_todrop.dta saved
+(3599621 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    22,202,586
+        from master                22,202,586  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            19,306  (_merge==3)
+    -----------------------------------------
+(19306 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1997.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1997.dt
+> a saved
+(3282186 observations deleted)
+(19937640 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31998.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31998.dta saved
+(433983 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1998.dta saved
+(320204 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1999.dta saved
+(308964 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG2000.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2000.dta saved
+(829874 observations deleted)
+(222 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1998_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1998_todrop.dta saved
+(3282186 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    21,819,727
+        from master                21,819,727  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            11,382  (_merge==3)
+    -----------------------------------------
+(11382 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1998.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1998.dt
+> a saved
+(3321030 observations deleted)
+(19423747 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG31999.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG31999.dta saved
+(320204 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG1999.dta saved
+(308964 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2000.dta saved
+(304843 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG2001.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2001.dta saved
+(816219 observations deleted)
+(183 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_1999_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_1999_todrop.dta saved
+(3321030 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    21,165,197
+        from master                21,165,197  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             9,146  (_merge==3)
+    -----------------------------------------
+(9146 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 1999.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year1999.dt
+> a saved
+(3165555 observations deleted)
+(18965883 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG32000.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG32000.dta saved
+(308964 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2000.dta saved
+(304843 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2001.dta saved
+(357412 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG2002.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2002.dta saved
+(814730 observations deleted)
+(262 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_2000_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_2000_todrop.dta saved
+(3165555 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    20,739,746
+        from master                20,739,746  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            12,610  (_merge==3)
+    -----------------------------------------
+(12610 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 2000.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year2000.dt
+> a saved
+(3223727 observations deleted)
+(18229816 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG32001.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG32001.dta saved
+(304843 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2001.dta saved
+(357412 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2002.dta saved
+(397720 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG2003.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2003.dta saved
+(807019 observations deleted)
+(1632 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_2001_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_2001_todrop.dta saved
+(3223727 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    20,032,477
+        from master                20,032,477  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            67,594  (_merge==3)
+    -----------------------------------------
+(67594 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 2001.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year2001.dt
+> a saved
+(3224164 observations deleted)
+(16965877 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG32002.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG32002.dta saved
+(357412 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2002.dta saved
+(397720 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2003.dta saved
+(557728 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_TG2004.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2004.dta saved
+(789881 observations deleted)
+(602 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_2002_todrop.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_2002_todrop.dta saved
+(3224164 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    19,042,714
+        from master                19,042,714  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                            27,106  (_merge==3)
+    -----------------------------------------
+(27106 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year
+> 2002.dta not found)
+file /scratch/kb103/stata/earnings_losses/xregression_annual_income_year2002.dt
+> a saved
+(2804554 observations deleted)
+(16404952 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_pid_CG32003.dta not found)
+file /scratch/kb103/stata/earnings_losses/EL_pid_CG32003.dta saved
+(397720 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2003.dta saved
+(557728 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_pid_TG2004.dta saved
+file /scratch/kb103/stata/earnings_losses/EL_Davis_annual_income_year2005.dta
+    not found
+r(601);
+
+end of do-file
+r(601);
