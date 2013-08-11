@@ -54,7 +54,7 @@ saveold "`filepath'/control_treatment_ind_all_1982.dta", replace
 
 ***** CREATE FILES FOR EACH YEAR ******************************
 
-forval yy = 1976/2004{
+forval yy = 2001/2004{
 	
 	* TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
 	use "`filepath'/control_treatment_ind_all.dta", clear
