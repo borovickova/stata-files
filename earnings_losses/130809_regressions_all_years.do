@@ -54,7 +54,7 @@ saveold "`filepath'/control_treatment_ind_all_1982.dta", replace
 
 ***** CREATE FILES FOR EACH YEAR ******************************
 
-forval yy = 2001/2004{
+forval yy = 2005/2007{
 	
 	* TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
 	use "`filepath'/control_treatment_ind_all.dta", clear
@@ -120,7 +120,7 @@ forval yy = 2001/2004{
 
 
 * GENERATE ANNUAL INCOME
-forval yy = 1976/2004{
+forval yy = 2005/2007{
 	
 	* TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
 	use "`filepath'/EL_ind_year`yy'.dta"
@@ -158,7 +158,7 @@ forval yy = 1976/2004{
 	
 * CREATE FILES FOR REPLICATING DAVIS REGRESSIONS
 
-forval yy = 1976/2004{	
+forval yy = 2003/2005{	
 	* DEAL WITH DUPLICATE OBSERVATIONS - IF A WORKER IS IN MORE THAN ONE TREATMENT/CONTROL GROUP
 	
 	* CONTROL GROUP
