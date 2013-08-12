@@ -27,7 +27,7 @@ forval yy = 1976/2004{
 	use "`filepath'/EL_Davis_ind_year`yy'.dta", clear
 	drop if income==.
 	gen daily_wage = income/30/(cpi/100)
-	gen daily_wage_coded = income_coded/30/(cpi/100)
+	gen daily_wage_coded = ils ncome_coded/30/(cpi/100)
 
 	sort pid year
 	by pid year: gen int index = _n

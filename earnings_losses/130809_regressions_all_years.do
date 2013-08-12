@@ -214,7 +214,7 @@ forval yy = 2003/2005{
 
 ***** REGRESSIONS **************************************************
 
-forval yy = 1976/2004{	 	
+forval yy = 1989/2004{	 	
 	use "`filepath'/xregression_annual_income_year`yy'.dta" , clear
 	gen byte treatment =1 if TG4davis_men==1 | TG4davis_women==1
 	
@@ -242,6 +242,9 @@ forval yy = 1976/2004{
 	sort pid year
 	xtset pid year
 	save "`filepath'/xregression_annual_income_year`yy'.dta" , replace	
+	
+	drop if age1>55
+	drop if year==2008
 	
 	*local maxround = 2007-1982
 	local lastD = `maxround'+6
