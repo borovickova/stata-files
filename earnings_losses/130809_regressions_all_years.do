@@ -54,6 +54,7 @@ saveold "`filepath'/control_treatment_ind_all_1982.dta", replace
 
 ***** CREATE FILES FOR EACH YEAR ******************************
 
+/*
 forval yy = 2005/2007{
 	
 	* TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
@@ -209,48 +210,44 @@ forval yy = 2003/2005{
 	drop _merge
 	save "`filepath'/xregression_annual_income_year`yy'.dta" , replace
 }	
-/*	
-* REGRESSIONS
+*/
+
+***** REGRESSIONS **************************************************
+
 forval yy = 1976/2004{	 	
-	use "`filepath'/regression_annual_income_year`yy'.dta" , clear
-	gen byte treatmet =1 if TG4davis_men==1 | TG4davis_women==1
+	use "`filepath'/xregression_annual_income_year`yy'.dta" , clear
+	gen byte treatment =1 if TG4davis_men==1 | TG4davis_women==1
 	
 	* GENERATE Dtk dummies
-	* note: k0 is just to keep the index k non-positive
 	
-	forval tt = 1972/2007{
-		local k0 = (`yy'+2) - `tt'	
-		local k  = `tt'- `yy' + `k0'
-		local k1 = `tt'-(`yy'+1) + `k0'
-		local k2 = `tt'-(`yy'+2) + `k0'
+	gen int current_year = .
+	local maxround = 2007-`yy'
+	
+	forval kk = -6/`maxround'{
 		
-		gen byte D_`tt'_`k'  = 0
-		gen byte D_`tt'_`k1' = 0
-		gen byte D_`tt'_`k2' = 0
+		replace current_year = year_mass_layoff +`kk' 
 		
-		local tk  = `tt'-`k' + `k0'
-		local tk1 = `tt'-`k1'+ `k0'
-		local tk2 = `tt'-`k2'+ `k0'
+		local kx = `kk' + 6
 		
-		replace D_`tt'_`k'  = 1 if year==`tt' & year_mass_layoff == `tk'  & treatmet == 1
-		replace D_`tt'_`k1' = 1 if year==`tt' & year_mass_layoff == `tk1' & treatmet == 1
-		replace D_`tt'_`k2' = 1 if year==`tt' & year_mass_layoff == `tk2' & treatmet == 1
+		gen byte D_`kx' = 0
+		replace D_`kx' = 1 if treatment == 1 & year == current_year
+			
 	}
-
+	drop current_year
 	gen age1 = year - year_mass_layoff + age
 	gen age2 = age1^2
 	gen age3 = age1^3
 	gen age4 = age1^4
-	save "`filepath'/regression_annual_income_year`yy'.dta", replace
 	
 	sort pid year
 	xtset pid year
-	save "`filepath'/regression_annual_income_year`yy'.dta", replace
+	save "`filepath'/xregression_annual_income_year`yy'.dta" , replace	
 	
-	xi: xtreg real_annual_income i.year age1 age2 age3 age4 D_1976_2 - D_1976_31 if sex==1, fe
-	xi: xtreg real_annual_income_coded i.year age age2 age3 age4 D_1976_2 - D_1976_31 if sex==1, fe
+	*local maxround = 2007-1982
+	local lastD = `maxround'+6
 	
-	xi: xtreg real_annual_income i.year age1 age2 age3 age4 D_1976_2 - D_1976_31 if sex==2, fe
-	xi: xtreg real_annual_income_coded i.year age age2 age3 age4 D_1976_2 - D_1976_31 if sex==2, fe
+	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D_`lastD' if sex==1, fe
+	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D_`lastD' if sex==2, fe
+	
 }	
 
