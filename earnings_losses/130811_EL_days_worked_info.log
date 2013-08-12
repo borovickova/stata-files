@@ -1,0 +1,365 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   13.0   Copyright 1985-2013 StataCorp LP
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 16-core Stata network perpetual license:
+       Serial number:  501306200703
+         Licensed to:  HPC, ITS
+                       New York University, NY
+
+Notes:
+      1.  (-v# option or -set maxvar-) 5000 maximum variables
+      2.  Command line editing disabled
+      3.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130811_EL_days_worked_info.do 
+
+. * ADD INFO TO THE REGRESSION FILES
+. * ADD DAYS WORKED AND AVERAGE DAILY WAGE IN A GIVEN YEAR
+. 
+. local filepath "/scratch/kb103/stata/earnings_losses"
+
+. 
+. * GENERATE AVERAGE DAILY WAGE AND NUMBER OF DAYS WORKED
+. forval yy = 1976/2004{
+  2.         
+.         * TREATMENT AND CONTROL IN A GIVEN DISPLACEMENT YEAR
+.         use "`filepath'/EL_ind_year`yy'.dta"
+  3.         drop if income==.
+  4.         gen daily_wage = income/30/(cpi/100)
+  5.         gen daily_wage_coded = income_coded/30/(cpi/100)
+  6. 
+.         sort pid year
+  7.         by pid year: gen int index = _n
+  8.         by pid year: egen daily_wage_mean = mean(daily_wage)
+  9.         by pid year: egen daily_wage_mean_coded = mean(daily_wage_coded)
+ 10.         by pid year: egen annual_days_worked = total(btag)
+ 11.         keep if index == 1
+ 12.         drop index
+ 13.         keep year pid daily_wage_mean daily_wage_mean_coded annual_days_wo
+> rked
+ 14.         save "`filepath'/EL_daily_wage`yy'.dta", replace
+ 15.         
+.         * TREATMENT DAVIS MEASURE
+.         
+.         use "`filepath'/EL_Davis_ind_year`yy'.dta", clear
+ 16.         drop if income==.
+ 17.         gen daily_wage = income/30/(cpi/100)
+ 18.         gen daily_wage_coded = income_coded/30/(cpi/100)
+ 19. 
+.         sort pid year
+ 20.         by pid year: gen int index = _n
+ 21.         by pid year: egen daily_wage_mean = mean(daily_wage)
+ 22.         by pid year: egen daily_wage_mean_coded = mean(daily_wage_coded)
+ 23.         by pid year: egen annual_days_worked = total(btag)
+ 24.         keep if index == 1
+ 25.         drop index
+ 26.         keep year pid daily_wage_mean daily_wage_mean_coded annual_days_wo
+> rked
+ 27. 
+.         save "`filepath'/EL_Davis_daily_wage`yy'.dta", replace          
+ 28. }
+(263657 observations deleted)
+(1933137 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1976.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1976.dta saved
+(5923 observations deleted)
+(56257 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1976.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1976.dta saved
+(273751 observations deleted)
+(2015964 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1977.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1977.dta saved
+(5660 observations deleted)
+(45881 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1977.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1977.dta saved
+(296019 observations deleted)
+(2186068 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1978.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1978.dta saved
+(4943 observations deleted)
+(56891 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1978.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1978.dta saved
+(311633 observations deleted)
+(2285120 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1979.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1979.dta saved
+(5514 observations deleted)
+(65426 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1979.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1979.dta saved
+(321734 observations deleted)
+(2366463 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1980.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1980.dta saved
+(8020 observations deleted)
+(63338 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1980.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1980.dta saved
+(344060 observations deleted)
+(2553648 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1981.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1981.dta saved
+(9465 observations deleted)
+(72655 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1981.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1981.dta saved
+(370453 observations deleted)
+(2772240 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1982.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1982.dta saved
+(13741 observations deleted)
+(84261 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1982.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1982.dta saved
+(399733 observations deleted)
+(2950484 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1983.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1983.dta saved
+(6680 observations deleted)
+(66545 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1983.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1983.dta saved
+(410000 observations deleted)
+(2994791 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1984.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1984.dta saved
+(6267 observations deleted)
+(56086 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1984.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1984.dta saved
+(417456 observations deleted)
+(3038499 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1985.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1985.dta saved
+(4813 observations deleted)
+(50200 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1985.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1985.dta saved
+(430198 observations deleted)
+(3111369 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1986.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1986.dta saved
+(5294 observations deleted)
+(60715 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1986.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1986.dta saved
+(444358 observations deleted)
+(3139235 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1987.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1987.dta saved
+(6634 observations deleted)
+(62009 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1987.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1987.dta saved
+(458773 observations deleted)
+(3258032 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1988.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1988.dta saved
+(9349 observations deleted)
+(75810 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1988.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1988.dta saved
+(456060 observations deleted)
+(3210669 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1989.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1989.dta saved
+(12404 observations deleted)
+(133647 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1989.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1989.dta saved
+(468218 observations deleted)
+(3305728 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1990.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1990.dta saved
+(10973 observations deleted)
+(79395 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1990.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1990.dta saved
+(478642 observations deleted)
+(3424041 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1991.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1991.dta saved
+(11965 observations deleted)
+(86740 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1991.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1991.dta saved
+(497223 observations deleted)
+(3563701 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1992.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1992.dta saved
+(11655 observations deleted)
+(95449 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1992.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1992.dta saved
+(513091 observations deleted)
+(3665142 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1993.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1993.dta saved
+(12372 observations deleted)
+(104507 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1993.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1993.dta saved
+(515223 observations deleted)
+(3658866 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1994.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1994.dta saved
+(11724 observations deleted)
+(107768 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1994.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1994.dta saved
+(524717 observations deleted)
+(3695226 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1995.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1995.dta saved
+(11718 observations deleted)
+(92493 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1995.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1995.dta saved
+(540786 observations deleted)
+(3830073 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1996.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1996.dta saved
+(12441 observations deleted)
+(117854 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1996.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1996.dta saved
+(544678 observations deleted)
+(3795570 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1997.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1997.dta saved
+(10186 observations deleted)
+(104670 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1997.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1997.dta saved
+(539779 observations deleted)
+(3714780 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1998.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1998.dta saved
+(13145 observations deleted)
+(103600 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1998.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1998.dta saved
+(538723 observations deleted)
+(3627622 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage1999.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage1999.dta saved
+(10117 observations deleted)
+(80739 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1999.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage1999.dta saved
+(530305 observations deleted)
+(3572184 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage2000.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage2000.dta saved
+(9272 observations deleted)
+(82686 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2000.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2000.dta saved
+(524786 observations deleted)
+(3513812 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage2001.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage2001.dta saved
+(12125 observations deleted)
+(90434 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2001.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2001.dta saved
+(513113 observations deleted)
+(3417901 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage2002.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage2002.dta saved
+(14380 observations deleted)
+(97485 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2002.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2002.dta saved
+(502213 observations deleted)
+(3323951 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage2003.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage2003.dta saved
+(14836 observations deleted)
+(107525 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2003.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2003.dta saved
+(501381 observations deleted)
+(3288537 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_daily_wage2004.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/EL_daily_wage2004.dta saved
+(14868 observations deleted)
+(134425 observations deleted)
+(note: file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2004.dta no
+> t found)
+file /scratch/kb103/stata/earnings_losses/EL_Davis_daily_wage2004.dta saved
+
+. 
+. 
+end of do-file
