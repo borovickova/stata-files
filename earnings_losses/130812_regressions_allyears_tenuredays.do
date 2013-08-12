@@ -4,7 +4,7 @@
 local filepath "/scratch/kb103/stata/earnings_losses"
 
 * CREATE FILES THE REGRESSIONS
-
+/*
 forval yy = 1976/2007{
 
 	use "`filepath'/control_treatment_ind_year`yy'.dta"
@@ -24,10 +24,10 @@ forval yy = 1976/2007{
 	saveold "`filepath'/EL_pid_TG5`yy'.dta", replace
 	
 }
-
+*/
 * REGRESSION FILES
 
-forval yy = 1976/2004{	
+forval yy = 1976/2003{	
 
 	* DEAL WITH DUPLICATE OBSERVATIONS - IF A WORKER IS IN MORE THAN ONE TREATMENT/CONTROL GROUP
 	local endy = `yy'+2
@@ -61,7 +61,7 @@ forval yy = 1976/2004{
 
 ***** REGRESSIONS **************************************************
 
-forval yy = 1976/2004{	 	
+forval yy = 1976/2003{	 	
 	use "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , clear
 	gen byte treatment =1 if TG5_men==1 | TG5_women==1
 	
