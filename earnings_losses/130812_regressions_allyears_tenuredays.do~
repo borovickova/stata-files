@@ -53,8 +53,8 @@ forval yy = 1976/2003{
 		append using "`filepath'/EL_Davis_annual_income_year`yy1'.dta"
 	}
 	merge m:1 pid using "`filepath'/EL_`yy'_CTG5tokeep.dta"
+	drop if _merge==3
 	keep if _merge==3
-        drop _merge
 	save "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , replace
 	
 }

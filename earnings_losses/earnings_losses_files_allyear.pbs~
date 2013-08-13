@@ -1,0 +1,24 @@
+### PBS script to run a parallel matlab job 
+### on the cluster
+
+#PBS -l nodes=1:ppn=1,walltime=4:00:00
+#PBS -N earnings_losses_files
+#PBS -M kb103@nyu.edu
+#PBS -m abe
+#PBS -q bigmem
+#PBS -l mem=32GB
+#PBS -e localhost:/home/kb103/stata-files/earnings_losses/Errors_files.err
+#PBS -o localhost:/home/kb103/stata-files/earnings_losses/Output_files.out 
+
+module load stata/13
+cd /home/kb103/stata-files/earnings_losses
+stata-mp -b do 130809_regressions_all_years.do
+
+### You can add more stuff for the script to do after the job is completed
+
+### E.g. zip up the ResultsDir for easy transfer
+### zip -r Results.zip ResultsDir/*.*
+
+exit 0;
+
+

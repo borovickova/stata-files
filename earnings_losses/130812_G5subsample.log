@@ -1,0 +1,39 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   13.0   Copyright 1985-2013 StataCorp LP
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 16-core Stata network perpetual license:
+       Serial number:  501306200703
+         Licensed to:  HPC, ITS
+                       New York University, NY
+
+Notes:
+      1.  (-v# option or -set maxvar-) 5000 maximum variables
+      2.  Command line editing disabled
+      3.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130812_G5subsample.do 
+
+. local filepath "/scratch/kb103/stata/earnings_losses"
+
+. use "`filepath'/regression_annual_income_year_CTG51982.dta"
+
+. keep if _n<5000
+(19145205 observations deleted)
+
+. saveold "regression_annual_income_year_CTG51982_subsample.dta", replace
+(note: file regression_annual_income_year_CTG51982_subsample.dta not found)
+file regression_annual_income_year_CTG51982_subsample.dta saved
+
+. 
+end of do-file
