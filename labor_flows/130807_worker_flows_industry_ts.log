@@ -1,0 +1,116 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   11.0   Copyright 1984-2009
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 8-core Stata network perpetual license:
+       Serial number:  50110549827
+         Licensed to:  High Performance Computing
+                       New York University
+
+Notes:
+      1.  (-m# option or -set memory-) 50.00 MB allocated to data
+      2.  (-v# option or -set maxvar-) 5000 maximum variables
+      3.  Command line editing disabled
+      4.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130807_worker_flows_industry_ts.do 
+
+. set memory 14000m
+
+Current memory allocation
+-------------------------
+
+                    current                                 memory usage
+    settable          value     description                 (1M = 1024k)
+    --------------------------------------------------------------------
+    set maxvar         5000     max. variables allowed           1.790M
+    set memory        14000M    max. data space             14,000.000M
+    set matsize         400     max. RHS vars in models          1.254M
+                                                            -----------
+                                                            14,003.044M
+
+. local filepath "/scratch/kb103/stata/labor_flows"
+
+. use "`filepath'/quarterly_emp_hire_sep_ALL_reshaped.dta"
+
+. 
+. drop if empQ==.
+(0 observations deleted)
+
+. drop if empQ==0
+(5655984 observations deleted)
+
+. 
+. merge m:1 fid using "`filepath'/fid_industry.dta"
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                       229,374
+        from master                         0  (_merge==1)
+        from using                    229,374  (_merge==2)
+
+    matched                        33,315,868  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(229374 observations deleted)
+
+. 
+. gen int time = (year-1972)*4+quarter
+
+. xtset fid time
+       panel variable:  fid (unbalanced)
+        time variable:  time, 1 to 144, but with gaps
+                delta:  1 unit
+
+. gen Z = 0.5*(empQ+L1.empQ)
+(1839226 missing values generated)
+
+. 
+. sort year quarter industry
+
+. by year quarter industry: egen emp_tot = total(empQ)
+
+. by year quarter industry: egen Z_tot = total(Z)
+
+. by year quarter industry: egen hire_tot = total(hireQ)
+
+. by year quarter industry: egen hire1st_tot = total(hire1stQ)
+
+. by year quarter industry: egen sep_tot = total(sepQ)
+
+. by year quarter industry: egen sepLast_tot = total(sepLastQ)
+
+. by year quarter industry: egen hirefromE_tot = total(hirefromEMPQ )
+
+. by year quarter industry: egen hirefromENTER_tot = total(hirefromENTERDATAQ )
+
+. by year quarter industry: egen septoE_tot = total(septoEMPQ )
+
+. by year quarter industry: egen septoRETIR_tot = total(septoRETIRQ )
+
+. 
+. by year quarter industry: gen index = _n
+
+. keep if index==1
+(33313996 observations deleted)
+
+. drop index
+
+. 
+. save worker_flows_industry_ts.dta,replace
+(note: file worker_flows_industry_ts.dta not found)
+file worker_flows_industry_ts.dta saved
+
+. 
+end of do-file
