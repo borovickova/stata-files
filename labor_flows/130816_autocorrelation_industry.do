@@ -12,7 +12,7 @@ merge m:1 fid using "`filepath'/fid_industry.dta"
 keep if _merge==3
 
 *use "C:\katka\NYU\projects\rigid wages\sample_firm.dta", clear
-keep year fid empQ ind*
+keep year fid empQ ind* quarter
 gen int time = (year-1972)*4+quarter
 xtset fid time
 gen lnemp = log(empQ)
