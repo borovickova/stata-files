@@ -1,7 +1,7 @@
 
-set memory 14000m
+*set memory 14000m
 local filepath "/scratch/kb103/stata/labor_flows"
-
+/*
 use "`filepath'/quarterly_emp_hire_sep_ALL_reshaped.dta"
 
 keep fid year quarter empQ
@@ -43,9 +43,18 @@ replace age_cat = 4 if year_start == 1972
 replace age_cat = 3 if plant_age>10
 
 save  "`filepath'/autocorrelation_industry.dta", replace
+*/
 
+use "`filepath'/autocorrelation_industry.dta"
+forval ii = 1/13{
+	xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii', fe
+	xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii' & year<1990, fe
+	xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii' & year>1990, fe
+	
+}
+
+/*
 xi: xtreg lnemp i.industry*lnemp_lag i.time*i.industry i.size_cat i.age_cat, fe
-
 keep if year<1990
 xi: xtreg lnemp i.industry*lnemp_lag i.time*i.industry i.size_cat i.age_cat, fe
  
