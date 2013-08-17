@@ -11,11 +11,9 @@ drop if empQ==.
 merge m:1 fid using "`filepath'/fid_industry.dta"
 keep if _merge==3
 
-gen int time = (year-1972)*4+quarter
-
 *use "C:\katka\NYU\projects\rigid wages\sample_firm.dta", clear
 keep year fid empQ ind*
-*gen time = year
+gen int time = (year-1972)*4+quarter
 xtset fid time
 gen lnemp = log(empQ)
 gen lnemp_lag = L1.lnemp
@@ -46,11 +44,13 @@ replace age_cat = 3 if plant_age>10
 
 save  "`filepath'/autocorrelation_industry.dta", replace
 
-*drop if year<1985
-*drop if year>1995
-*drop if industry<6
-*drop if industry>8
-
 xi: xtreg lnemp i.industry*lnemp_lag i.time*i.industry i.size_cat i.age_cat, fe
-*xi: xtreg lnemp i.industry*lnemp_lag i.time*i.industry i.size_cat i.age_cat
-*xi: areg lnemp i.industry*lnemp_lag i.fid i.time*i.industry i.size_cat i.age_cat, absorb(i.fid)
+
+keep if year<1990
+xi: xtreg lnemp i.industry*lnemp_lag i.time*i.industry i.size_cat i.age_cat, fe
+ 
+use "`filepath'/autocorrelation_industry.dta",clear
+keep if year>1990 
+xi: xtreg lnemp i.industry*lnemp_lag i.time*i.industry i.size_cat i.age_cat, fe
+
+
