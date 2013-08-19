@@ -10,7 +10,7 @@
 #PBS -e localhost:/home/kb103/stata-files/labor_flows/Errors.err
 #PBS -o localhost:/home/kb103/stata-files/labor_flows/Output.out 
 
-module load stata/13
+module load stata/11
 cd /home/kb103/stata-files/labor_flows
 stata-mp -b do 130816_autocorrelation_industry.do
 

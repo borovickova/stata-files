@@ -7,11 +7,11 @@
 #PBS -m abe
 #PBS -q bigmem
 #PBS -l mem=32GB
-#PBS -e localhost:/home/kb103/labor_flows/Errors.err
-#PBS -o localhost:/home/kb103/labor_flows/Output.out 
+#PBS -e localhost:/home/kb103/stata-files/labor_flows/Errors.err
+#PBS -o localhost:/home/kb103/stata-files/labor_flows/Output.out 
 
 module load stata/11
-cd /home/kb103/labor_flows
+cd /home/kb103/stata-files/labor_flows
 stata-mp -b do 130807_worker_flows_industry_ts.do
 
 ### You can add more stuff for the script to do after the job is completed

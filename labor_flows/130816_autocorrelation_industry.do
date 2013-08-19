@@ -46,10 +46,10 @@ save  "`filepath'/autocorrelation_industry.dta", replace
 */
 
 use "`filepath'/autocorrelation_industry.dta"
-forval ii = 1/13{
+forval ii = 5/13{
 	xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii', fe
-	xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii' & year<1990, fe
-	xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii' & year>1990, fe
+	*xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii' & year<1990, fe
+	*xi: xtreg lnemp lnemp_lag i.time i.size_cat i.age_cat if industry==`ii' & year>1990, fe
 	
 }
 
