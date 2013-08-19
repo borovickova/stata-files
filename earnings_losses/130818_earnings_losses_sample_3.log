@@ -1,0 +1,564 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   13.0   Copyright 1985-2013 StataCorp LP
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+2-user 16-core Stata network perpetual license:
+       Serial number:  501306200703
+         Licensed to:  HPC, ITS
+                       New York University, NY
+
+Notes:
+      1.  (-v# option or -set maxvar-) 5000 maximum variables
+      2.  Command line editing disabled
+      3.  Stata running in batch mode
+
+Note:  Your site can add messages to the introduction by editing the file
+       stata.msg in the directory where Stata is installed.
+
+. do 130818_earnings_losses_sample_3.do 
+
+. * EARNINGS LOSSES OF DISPLACED WORKERS
+. * CONSIDER ONLY UND AND UNA TYPES
+. 
+. * USE A CONTROL GROUP WHICH DID NOT SEPARATE IN YEAR y
+. 
+. local filepath "/scratch/kb103/stata/earnings_losses"
+
+. 
+. forval ii = 1/10{
+  2. 
+.         use "`filepath'/130508employed_UStype_EL_`ii'_0.dta", clear
+  3.         append using "`filepath'/130508employed_UStype_EL_`ii'_1.dta"   
+  4.         merge m:1 fid year using "`filepath'/130508_firms_stats_EL_merged_
+> 25.dta"
+  5. 
+.         keep if _merge==3
+  6.         drop _merge
+  7. 
+.         gen byte A1=0
+  8.         replace A1 = 1 if age<=50 & age>=16
+  9. 
+.         gen byte T3 = 0
+ 10.         replace T3  = 1 if FEyM1==1 & FEyM2==1 & FEyM3==1
+ 11. 
+.         gen byte T4 = 0
+ 12.         replace T4  = 1 if FEyM1==1 & FEyM2==1
+ 13. 
+.         gen byte T5 = 0
+ 14.         replace T5 = 1 if days_worked_beginning > 1095
+ 15.         
+.         gen byte T6 = 0
+ 16.         replace T6  = 1 if days_worked_break > 1095
+ 17. 
+.         * control and treatment group
+.         
+.         gen byte sepD = 1 if FEyP1~= 1 & edate~=17531
+ 18.         
+.         * control and treatment group
+.         drop if emp==.
+ 19.         
+.         * control group
+.         gen byte CG7_men = 1 if A1==1 & sex==1 & T3==1 & FEyP1== 1 & emp>=25
+ 20.         gen byte CG8_men = 1 if A1==1 & sex==1 & T4==1 & FEyP1== 1 & emp>=
+> 25
+ 21.         gen byte CG9_men = 1 if A1==1 & sex==1 & T5==1 & FEyP1== 1 & emp>=
+> 25
+ 22.                 
+.         gen byte CG7_women = 1 if A1==1 & sex==2 & T3==1 & FEyP1== 1 & emp>=2
+> 5
+ 23.         gen byte CG8_women = 1 if A1==1 & sex==2 & T4==1 & FEyP1== 1 & emp
+> >=25
+ 24.         gen byte CG9_women = 1 if A1==1 & sex==2 & T5==1 & FEyP1== 1 & emp
+> >=25
+ 25.         
+.         gen byte CG_men =1 if CG7_men==1 | CG8_men==1 | CG9_men==1
+ 26.         gen byte CG_women =1 if CG7_women==1 | CG8_women==1 | CG9_women==1
+ 27.         
+.         keep if CG_men==1 | CG_women==1 
+ 28.         
+.         keep year pid fid age sex FE* days* CG* days_worked_beginning days_wo
+> rked_break
+ 29.         compress
+ 30.         save  "`filepath'/control_789_ind_`ii'.dta", replace
+ 31. }
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,328,777
+        from master                 4,225,624  (_merge==1)
+        from using                    103,153  (_merge==2)
+
+    matched                         9,195,157  (_merge==3)
+    -----------------------------------------
+(4328777 observations deleted)
+(7919058 real changes made)
+(4365775 real changes made)
+(5315924 real changes made)
+(4321467 real changes made)
+(4210918 real changes made)
+(6765386 missing values generated)
+(0 observations deleted)
+(7528304 missing values generated)
+(7186976 missing values generated)
+(7548177 missing values generated)
+(8143179 missing values generated)
+(7884104 missing values generated)
+(8135916 missing values generated)
+(7171535 missing values generated)
+(7855182 missing values generated)
+(5831560 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,544,746 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_1.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_1.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,323,627
+        from master                 4,219,813  (_merge==1)
+        from using                    103,814  (_merge==2)
+
+    matched                         9,213,318  (_merge==3)
+    -----------------------------------------
+(4323627 observations deleted)
+(7932208 real changes made)
+(4376274 real changes made)
+(5326459 real changes made)
+(4331573 real changes made)
+(4221858 real changes made)
+(6777823 missing values generated)
+(0 observations deleted)
+(7545707 missing values generated)
+(7203828 missing values generated)
+(7564836 missing values generated)
+(8156500 missing values generated)
+(7896585 missing values generated)
+(8149730 missing values generated)
+(7188240 missing values generated)
+(7867841 missing values generated)
+(5842763 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,669,990 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_2.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_2.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,323,751
+        from master                 4,219,091  (_merge==1)
+        from using                    104,660  (_merge==2)
+
+    matched                         9,195,935  (_merge==3)
+    -----------------------------------------
+(4323751 observations deleted)
+(7915935 real changes made)
+(4370889 real changes made)
+(5320607 real changes made)
+(4323099 real changes made)
+(4213745 real changes made)
+(6769387 missing values generated)
+(0 observations deleted)
+(7526491 missing values generated)
+(7184829 missing values generated)
+(7546810 missing values generated)
+(8143680 missing values generated)
+(7885057 missing values generated)
+(8137253 missing values generated)
+(7169521 missing values generated)
+(7856610 missing values generated)
+(5830196 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,583,302 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_3.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_3.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,327,013
+        from master                 4,224,001  (_merge==1)
+        from using                    103,012  (_merge==2)
+
+    matched                         9,220,479  (_merge==3)
+    -----------------------------------------
+(4327013 observations deleted)
+(7943305 real changes made)
+(4376891 real changes made)
+(5328646 real changes made)
+(4329525 real changes made)
+(4219981 real changes made)
+(6781417 missing values generated)
+(0 observations deleted)
+(7541626 missing values generated)
+(7197518 missing values generated)
+(7561583 missing values generated)
+(8174423 missing values generated)
+(7916347 missing values generated)
+(8167560 missing values generated)
+(7181932 missing values generated)
+(7887644 missing values generated)
+(5849097 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,684,876 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_4.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_4.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,325,441
+        from master                 4,222,012  (_merge==1)
+        from using                    103,429  (_merge==2)
+
+    matched                         9,199,394  (_merge==3)
+    -----------------------------------------
+(4325441 observations deleted)
+(7918941 real changes made)
+(4372283 real changes made)
+(5320511 real changes made)
+(4326276 real changes made)
+(4216699 real changes made)
+(6768401 missing values generated)
+(0 observations deleted)
+(7525831 missing values generated)
+(7183309 missing values generated)
+(7546533 missing values generated)
+(8150403 missing values generated)
+(7892288 missing values generated)
+(8142562 missing values generated)
+(7167946 missing values generated)
+(7863695 missing values generated)
+(5832247 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,608,646 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_5.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_5.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,334,396
+        from master                 4,230,986  (_merge==1)
+        from using                    103,410  (_merge==2)
+
+    matched                         9,189,631  (_merge==3)
+    -----------------------------------------
+(4334396 observations deleted)
+(7912624 real changes made)
+(4366194 real changes made)
+(5314269 real changes made)
+(4319351 real changes made)
+(4210096 real changes made)
+(6760869 missing values generated)
+(0 observations deleted)
+(7523556 missing values generated)
+(7182297 missing values generated)
+(7544407 missing values generated)
+(8138429 missing values generated)
+(7879631 missing values generated)
+(8131124 missing values generated)
+(7167030 missing values generated)
+(7851011 missing values generated)
+(5828410 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,501,978 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_6.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_6.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,324,533
+        from master                 4,221,257  (_merge==1)
+        from using                    103,276  (_merge==2)
+
+    matched                         9,200,903  (_merge==3)
+    -----------------------------------------
+(4324533 observations deleted)
+(7921988 real changes made)
+(4371540 real changes made)
+(5321792 real changes made)
+(4324094 real changes made)
+(4214694 real changes made)
+(6771521 missing values generated)
+(0 observations deleted)
+(7524495 missing values generated)
+(7181933 missing values generated)
+(7543555 missing values generated)
+(8158111 missing values generated)
+(7900005 missing values generated)
+(8151413 missing values generated)
+(7166226 missing values generated)
+(7871974 missing values generated)
+(5837297 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,544,908 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_7.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_7.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,318,794
+        from master                 4,214,882  (_merge==1)
+        from using                    103,912  (_merge==2)
+
+    matched                         9,209,761  (_merge==3)
+    -----------------------------------------
+(4318794 observations deleted)
+(7933969 real changes made)
+(4372171 real changes made)
+(5323125 real changes made)
+(4325437 real changes made)
+(4215952 real changes made)
+(6774787 missing values generated)
+(0 observations deleted)
+(7533277 missing values generated)
+(7189805 missing values generated)
+(7553217 missing values generated)
+(8159347 missing values generated)
+(7900969 missing values generated)
+(8152282 missing values generated)
+(7173986 missing values generated)
+(7872259 missing values generated)
+(5836484 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,718,986 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_8.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_8.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,322,732
+        from master                 4,218,469  (_merge==1)
+        from using                    104,263  (_merge==2)
+
+    matched                         9,197,974  (_merge==3)
+    -----------------------------------------
+(4322732 observations deleted)
+(7925357 real changes made)
+(4364601 real changes made)
+(5314259 real changes made)
+(4318248 real changes made)
+(4209010 real changes made)
+(6765365 missing values generated)
+(0 observations deleted)
+(7521229 missing values generated)
+(7178190 missing values generated)
+(7541718 missing values generated)
+(8153053 missing values generated)
+(7894867 missing values generated)
+(8145884 missing values generated)
+(7162616 missing values generated)
+(7866269 missing values generated)
+(5830911 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,607,134 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_9.dta not foun
+> d)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_9.dta saved
+(label lflabel already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                     4,318,684
+        from master                 4,214,874  (_merge==1)
+        from using                    103,810  (_merge==2)
+
+    matched                         9,198,119  (_merge==3)
+    -----------------------------------------
+(4318684 observations deleted)
+(7921459 real changes made)
+(4366540 real changes made)
+(5316657 real changes made)
+(4321775 real changes made)
+(4212218 real changes made)
+(6766756 missing values generated)
+(0 observations deleted)
+(7529808 missing values generated)
+(7188289 missing values generated)
+(7549398 missing values generated)
+(8147910 missing values generated)
+(7888820 missing values generated)
+(8140197 missing values generated)
+(7172799 missing values generated)
+(7860190 missing values generated)
+(5834870 observations deleted)
+  FEyM1 was int now byte
+  FEIyM1 was int now byte
+  FEyP1 was int now byte
+  FEIyP1 was int now byte
+  FEyM2 was int now byte
+  FEIyM2 was int now byte
+  FEyP2 was int now byte
+  FEIyP2 was int now byte
+  FEyM3 was int now byte
+  FEIyM3 was int now byte
+  FEyP3 was int now byte
+  FEIyP3 was int now byte
+  FEIyP0 was int now byte
+  days_worked_beginning was float now int
+  days_worked_break was float now int
+  age was int now byte
+  (60,538,482 bytes saved)
+(note: file /scratch/kb103/stata/earnings_losses/control_789_ind_10.dta not fou
+> nd)
+file /scratch/kb103/stata/earnings_losses/control_789_ind_10.dta saved
+
+. 
+. 
+end of do-file

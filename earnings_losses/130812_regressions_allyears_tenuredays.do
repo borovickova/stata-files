@@ -4,8 +4,8 @@
 local filepath "/scratch/kb103/stata/earnings_losses"
 
 * CREATE FILES THE REGRESSIONS
-/*
-forval yy = 1976/2007{
+
+forval yy = 1976/2005{
 
 	use "`filepath'/control_treatment_ind_year`yy'.dta"
 	keep if CG5_men==1 | CG5_women==1
@@ -20,11 +20,11 @@ forval yy = 1976/2007{
 	by pid: gen int index = _n
 	keep if index == 1
 	drop index
-	keep pid
+	keep pid TG5*
 	saveold "`filepath'/EL_pid_TG5`yy'.dta", replace
 	
 }
-*/
+
 * REGRESSION FILES
 
 forval yy = 1976/2003{	
@@ -54,7 +54,8 @@ forval yy = 1976/2003{
 	}
 	merge m:1 pid using "`filepath'/EL_`yy'_CTG5tokeep.dta"
 	keep if _merge==3
-        drop _merge
+	drop _merge
+  
 	save "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , replace
 	
 }
@@ -63,7 +64,7 @@ forval yy = 1976/2003{
 
 forval yy = 1976/2003{	 	
 	use "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , clear
-	gen byte treatment =1 if TG5_men==1 | TG5_women==1
+	gen byte treatment =1 if TG5_men ==1 |TG5_women ==1
 	
 	* GENERATE Dtk dummies
 	

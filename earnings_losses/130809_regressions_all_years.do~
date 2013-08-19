@@ -214,7 +214,7 @@ forval yy = 2003/2005{
 
 ***** REGRESSIONS **************************************************
 
-forval yy = 1990/1999{	 	
+forval yy = 1989/2004{	 	
 	use "`filepath'/xregression_annual_income_year`yy'.dta" , clear
 	gen byte treatment =1 if TG4davis_men==1 | TG4davis_women==1
 	
