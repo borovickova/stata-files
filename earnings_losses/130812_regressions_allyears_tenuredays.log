@@ -422,3 +422,167 @@ file /scratch/kb103/stata/earnings_losses/EL_1996_CTG5tokeep.dta saved
 
     matched                        58,016,676  (_merge==3)
     -----------------------------------------
+(12697409 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
+> 6.dta saved
+(22274 observations deleted)
+(0 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_1997_CTG5tokeep.dta saved
+(2715901 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    11,852,411
+        from master                11,852,225  (_merge==1)
+        from using                        186  (_merge==2)
+
+    matched                        57,597,582  (_merge==3)
+    -----------------------------------------
+(11852411 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
+> 7.dta saved
+(21980 observations deleted)
+(0 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_1998_CTG5tokeep.dta saved
+(2384722 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    11,299,283
+        from master                11,299,129  (_merge==1)
+        from using                        154  (_merge==2)
+
+    matched                        56,732,433  (_merge==3)
+    -----------------------------------------
+(11299283 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
+> 8.dta saved
+(18304 observations deleted)
+(0 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_1999_CTG5tokeep.dta saved
+(2601607 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    11,443,636
+        from master                11,443,499  (_merge==1)
+        from using                        137  (_merge==2)
+
+    matched                        54,581,492  (_merge==3)
+    -----------------------------------------
+(11443636 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
+> 9.dta saved
+(30206 observations deleted)
+(0 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_2000_CTG5tokeep.dta saved
+(2340692 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    11,299,736
+        from master                11,299,621  (_merge==1)
+        from using                        115  (_merge==2)
+
+    matched                        52,384,041  (_merge==3)
+    -----------------------------------------
+(11299736 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
+> 0.dta saved
+(21780 observations deleted)
+(0 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_2001_CTG5tokeep.dta saved
+(2433279 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    10,864,200
+        from master                10,864,093  (_merge==1)
+        from using                        107  (_merge==2)
+
+    matched                        49,762,850  (_merge==3)
+    -----------------------------------------
+(10864200 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
+> 1.dta saved
+(17938 observations deleted)
+(0 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_2002_CTG5tokeep.dta saved
+(2430025 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    10,312,961
+        from master                10,312,861  (_merge==1)
+        from using                        100  (_merge==2)
+
+    matched                        47,497,877  (_merge==3)
+    -----------------------------------------
+(10312961 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
+> 2.dta saved
+(19806 observations deleted)
+(0 observations deleted)
+file /scratch/kb103/stata/earnings_losses/EL_2003_CTG5tokeep.dta saved
+(2302798 observations deleted)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                    10,276,646
+        from master                10,276,558  (_merge==1)
+        from using                         88  (_merge==2)
+
+    matched                        45,782,980  (_merge==3)
+    -----------------------------------------
+(10276646 observations deleted)
+file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
+> 3.dta saved
+
+. 
+. /*
+> ***** REGRESSIONS **************************************************
+> 
+> forval yy = 1976/2003{          
+>         use "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , clear
+>         gen byte treatment =1 if TG5_men ==1 |TG5_women ==1
+>         
+>         * GENERATE Dtk dummies
+>         
+>         gen int current_year = .
+>         local maxround = 2007-`yy'
+>         
+>         forval kk = -6/`maxround'{
+>                 
+>                 replace current_year = year_mass_layoff +`kk' 
+>                 
+>                 local kx = `kk' + 6
+>                 
+>                 gen byte D_`kx' = 0
+>                 replace D_`kx' = 1 if treatment == 1 & year == current_year
+>                         
+>         }
+>         drop current_year
+>         gen age1 = year - year_mass_layoff + age
+>         gen age2 = age1^2
+>         gen age3 = age1^3
+>         gen age4 = age1^4
+>         
+>         sort pid year
+>         xtset pid year
+>         save "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , replac
+> e  
+>         
+>         drop if age1>55
+>         drop if year==2008
+>         
+>         local lastD = `maxround'+6
+>         
+>         xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D
+> _`lastD' if sex==1, fe
+>         xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D
+> _`lastD' if sex==2, fe
+>         
+> }       
+> 
+
+end of do-file
