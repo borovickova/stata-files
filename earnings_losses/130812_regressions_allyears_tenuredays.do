@@ -4,7 +4,7 @@
 local filepath "/scratch/kb103/stata/earnings_losses"
 
 * CREATE FILES THE REGRESSIONS
-
+/*
 forval yy = 1976/2005{
 
 	use "`filepath'/control_treatment_ind_year`yy'.dta"
@@ -24,7 +24,7 @@ forval yy = 1976/2005{
 	saveold "`filepath'/EL_pid_TG5`yy'.dta", replace
 	
 }
-
+*/
 * REGRESSION FILES
 
 forval yy = 1976/2003{	
@@ -34,7 +34,7 @@ forval yy = 1976/2003{
 	local begy = `yy'+1
 	use "`filepath'/EL_pid_CG5`yy'.dta"	
 	forval yy1 = `yy'/`endy'{
-		append using "`filepath'/EL_pid_TG5`yy'.dta"
+		append using "`filepath'/EL_pid_TG5`yy1'.dta"
 	}
 	keep pid 
 	sort pid
@@ -50,7 +50,7 @@ forval yy = 1976/2003{
 	use "`filepath'/EL_annual_income_year`yy'.dta" 
 	keep if CG5_men==1 | CG5_women==1 | TG5_men==1 | TG5_women==1
 	forval yy1 = `begy'/`endy'{
-		append using "`filepath'/EL_Davis_annual_income_year`yy1'.dta"
+		append using "`filepath'/EL_annual_income_year`yy1'.dta"
 	}
 	merge m:1 pid using "`filepath'/EL_`yy'_CTG5tokeep.dta"
 	keep if _merge==3
@@ -60,6 +60,7 @@ forval yy = 1976/2003{
 	
 }
 
+/*
 ***** REGRESSIONS **************************************************
 
 forval yy = 1976/2003{	 	

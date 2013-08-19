@@ -213,8 +213,8 @@ forval yy = 2003/2005{
 */
 
 ***** REGRESSIONS **************************************************
-
-forval yy = 1990/1999{	 	
+/*
+forval yy = 1976/1989{	 	
 	use "`filepath'/xregression_annual_income_year`yy'.dta" , clear
 	gen byte treatment =1 if TG4davis_men==1 | TG4davis_women==1
 	
@@ -247,6 +247,22 @@ forval yy = 1990/1999{
 	drop if year==2008
 	
 	*local maxround = 2007-1982
+	local lastD = `maxround'+6
+	
+	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D_`lastD' if sex==1, fe
+	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D_`lastD' if sex==2, fe
+	
+}	
+*/
+
+forval yy = 1976/1989{	 	
+
+	use "`filepath'/xregression_annual_income_year`yy'.dta" , clear
+	
+	drop if age1>55
+	drop if year==2008
+	
+	local maxround = 2007-`yy'
 	local lastD = `maxround'+6
 	
 	xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D_`lastD' if sex==1, fe

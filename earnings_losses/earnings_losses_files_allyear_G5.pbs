@@ -1,7 +1,7 @@
 ### PBS script to run a parallel matlab job 
 ### on the cluster
 
-#PBS -l nodes=1:ppn=1,walltime=12:00:00
+#PBS -l nodes=1:ppn=1,walltime=2:00:00
 #PBS -N EL_tenure_days
 #PBS -M kb103@nyu.edu
 #PBS -m abe
