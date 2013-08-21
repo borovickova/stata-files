@@ -54,535 +54,168 @@ Note:  Your site can add messages to the introduction by editing the file
 > }
 > */
 . * REGRESSION FILES
-. 
-. forval yy = 1976/2003{  
-  2. 
-.         * DEAL WITH DUPLICATE OBSERVATIONS - IF A WORKER IS IN MORE THAN ONE 
-> TREATMENT/CONTROL GROUP
-.         local endy = `yy'+2
-  3.         local begy = `yy'+1
-  4.         use "`filepath'/EL_pid_CG5`yy'.dta"     
-  5.         forval yy1 = `yy'/`endy'{
-  6.                 append using "`filepath'/EL_pid_TG5`yy1'.dta"
-  7.         }
-  8.         keep pid 
-  9.         sort pid
- 10.         by pid: gen int index = _n
- 11.         by pid: egen int maxindex = max(index)
- 12.         drop if maxindex>1
- 13.         keep if index==1
- 14.         keep pid
- 15.         save  "`filepath'/EL_`yy'_CTG5tokeep.dta", replace
- 16.         
-.         * CREATE A FILE FOR REGRESSION
-.         clear
- 17.         use "`filepath'/EL_annual_income_year`yy'.dta" 
- 18.         keep if CG5_men==1 | CG5_women==1 | TG5_men==1 | TG5_women==1
- 19.         forval yy1 = `begy'/`endy'{
- 20.                 append using "`filepath'/EL_annual_income_year`yy1'.dta"
- 21.         }
- 22.         merge m:1 pid using "`filepath'/EL_`yy'_CTG5tokeep.dta"
- 23.         keep if _merge==3
- 24.         drop _merge
- 25.   
-.         save "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , replac
-> e
- 26.         
-. }
-(11988 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1976_CTG5tokeep.dta saved
-(3750434 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,946,452
-        from master                13,945,509  (_merge==1)
-        from using                        943  (_merge==2)
-
-    matched                        39,770,468  (_merge==3)
-    -----------------------------------------
-(13946452 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5197
-> 6.dta saved
-(13080 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1977_CTG5tokeep.dta saved
-(2987424 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,053,196
-        from master                13,052,300  (_merge==1)
-        from using                        896  (_merge==2)
-
-    matched                        43,599,465  (_merge==3)
-    -----------------------------------------
-(13053196 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5197
-> 7.dta saved
-(11154 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1978_CTG5tokeep.dta saved
-(3131316 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    12,857,548
-        from master                12,856,687  (_merge==1)
-        from using                        861  (_merge==2)
-
-    matched                        45,658,084  (_merge==3)
-    -----------------------------------------
-(12857548 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5197
-> 8.dta saved
-(19362 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1979_CTG5tokeep.dta saved
-(3248424 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,633,547
-        from master                13,632,740  (_merge==1)
-        from using                        807  (_merge==2)
-
-    matched                        46,823,815  (_merge==3)
-    -----------------------------------------
-(13633547 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5197
-> 9.dta saved
-(15662 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1980_CTG5tokeep.dta saved
-(3102022 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    14,371,581
-        from master                14,370,796  (_merge==1)
-        from using                        785  (_merge==2)
-
-    matched                        48,750,792  (_merge==3)
-    -----------------------------------------
-(14371581 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 0.dta saved
-(17218 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1981_CTG5tokeep.dta saved
-(3417372 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    15,062,271
-        from master                15,061,532  (_merge==1)
-        from using                        739  (_merge==2)
-
-    matched                        50,700,821  (_merge==3)
-    -----------------------------------------
-(15062271 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 1.dta saved
-(10100 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1982_CTG5tokeep.dta saved
-(3711210 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    14,433,233
-        from master                14,432,536  (_merge==1)
-        from using                        697  (_merge==2)
-
-    matched                        53,156,875  (_merge==3)
-    -----------------------------------------
-(14433233 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 2.dta saved
-(11144 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1983_CTG5tokeep.dta saved
-(3578925 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,464,305
-        from master                13,463,655  (_merge==1)
-        from using                        650  (_merge==2)
-
-    matched                        55,518,985  (_merge==3)
-    -----------------------------------------
-(13464305 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 3.dta saved
-(12383 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1984_CTG5tokeep.dta saved
-(2996903 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    12,686,829
-        from master                12,686,198  (_merge==1)
-        from using                        631  (_merge==2)
-
-    matched                        57,459,800  (_merge==3)
-    -----------------------------------------
-(12686829 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 4.dta saved
-(15148 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1985_CTG5tokeep.dta saved
-(2949732 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    12,843,084
-        from master                12,842,425  (_merge==1)
-        from using                        659  (_merge==2)
-
-    matched                        57,472,798  (_merge==3)
-    -----------------------------------------
-(12843084 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 5.dta saved
-(52108 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1986_CTG5tokeep.dta saved
-(2998447 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    14,170,786
-        from master                14,170,151  (_merge==1)
-        from using                        635  (_merge==2)
-
-    matched                        56,629,498  (_merge==3)
-    -----------------------------------------
-(14170786 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 6.dta saved
-(19498 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1987_CTG5tokeep.dta saved
-(3193481 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,320,163
-        from master                13,319,581  (_merge==1)
-        from using                        582  (_merge==2)
-
-    matched                        56,780,319  (_merge==3)
-    -----------------------------------------
-(13320163 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 7.dta saved
-(15781 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1988_CTG5tokeep.dta saved
-(2999568 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    12,901,236
-        from master                12,900,691  (_merge==1)
-        from using                        545  (_merge==2)
-
-    matched                        57,400,738  (_merge==3)
-    -----------------------------------------
-(12901236 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 8.dta saved
-(13394 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1989_CTG5tokeep.dta saved
-(2831586 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    14,099,011
-        from master                14,098,534  (_merge==1)
-        from using                        477  (_merge==2)
-
-    matched                        55,813,897  (_merge==3)
-    -----------------------------------------
-(14099011 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5198
-> 9.dta saved
-(16938 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1990_CTG5tokeep.dta saved
-(3421894 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    15,002,864
-        from master                15,002,433  (_merge==1)
-        from using                        431  (_merge==2)
-
-    matched                        54,879,149  (_merge==3)
-    -----------------------------------------
-(15002864 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 0.dta saved
-(26902 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1991_CTG5tokeep.dta saved
-(3437387 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    15,479,780
-        from master                15,479,403  (_merge==1)
-        from using                        377  (_merge==2)
-
-    matched                        55,002,192  (_merge==3)
-    -----------------------------------------
-(15479780 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 1.dta saved
-(22242 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1992_CTG5tokeep.dta saved
-(3457600 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    14,708,936
-        from master                14,708,600  (_merge==1)
-        from using                        336  (_merge==2)
-
-    matched                        56,072,555  (_merge==3)
-    -----------------------------------------
-(14708936 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 2.dta saved
-(21881 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1993_CTG5tokeep.dta saved
-(3251223 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,898,022
-        from master                13,897,721  (_merge==1)
-        from using                        301  (_merge==2)
-
-    matched                        57,181,391  (_merge==3)
-    -----------------------------------------
-(13898022 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 3.dta saved
-(25240 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1994_CTG5tokeep.dta saved
-(2972305 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,685,745
-        from master                13,685,472  (_merge==1)
-        from using                        273  (_merge==2)
-
-    matched                        57,771,599  (_merge==3)
-    -----------------------------------------
-(13685745 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 4.dta saved
-(25545 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1995_CTG5tokeep.dta saved
-(2977336 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    13,861,858
-        from master                13,861,605  (_merge==1)
-        from using                        253  (_merge==2)
-
-    matched                        57,557,499  (_merge==3)
-    -----------------------------------------
-(13861858 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 5.dta saved
-(20503 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1996_CTG5tokeep.dta saved
-(2956410 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    12,697,409
-        from master                12,697,184  (_merge==1)
-        from using                        225  (_merge==2)
-
-    matched                        58,016,676  (_merge==3)
-    -----------------------------------------
-(12697409 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 6.dta saved
-(22274 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1997_CTG5tokeep.dta saved
-(2715901 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    11,852,411
-        from master                11,852,225  (_merge==1)
-        from using                        186  (_merge==2)
-
-    matched                        57,597,582  (_merge==3)
-    -----------------------------------------
-(11852411 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 7.dta saved
-(21980 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1998_CTG5tokeep.dta saved
-(2384722 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    11,299,283
-        from master                11,299,129  (_merge==1)
-        from using                        154  (_merge==2)
-
-    matched                        56,732,433  (_merge==3)
-    -----------------------------------------
-(11299283 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 8.dta saved
-(18304 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_1999_CTG5tokeep.dta saved
-(2601607 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    11,443,636
-        from master                11,443,499  (_merge==1)
-        from using                        137  (_merge==2)
-
-    matched                        54,581,492  (_merge==3)
-    -----------------------------------------
-(11443636 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5199
-> 9.dta saved
-(30206 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_2000_CTG5tokeep.dta saved
-(2340692 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    11,299,736
-        from master                11,299,621  (_merge==1)
-        from using                        115  (_merge==2)
-
-    matched                        52,384,041  (_merge==3)
-    -----------------------------------------
-(11299736 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
-> 0.dta saved
-(21780 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_2001_CTG5tokeep.dta saved
-(2433279 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    10,864,200
-        from master                10,864,093  (_merge==1)
-        from using                        107  (_merge==2)
-
-    matched                        49,762,850  (_merge==3)
-    -----------------------------------------
-(10864200 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
-> 1.dta saved
-(17938 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_2002_CTG5tokeep.dta saved
-(2430025 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    10,312,961
-        from master                10,312,861  (_merge==1)
-        from using                        100  (_merge==2)
-
-    matched                        47,497,877  (_merge==3)
-    -----------------------------------------
-(10312961 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
-> 2.dta saved
-(19806 observations deleted)
-(0 observations deleted)
-file /scratch/kb103/stata/earnings_losses/EL_2003_CTG5tokeep.dta saved
-(2302798 observations deleted)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                    10,276,646
-        from master                10,276,558  (_merge==1)
-        from using                         88  (_merge==2)
-
-    matched                        45,782,980  (_merge==3)
-    -----------------------------------------
-(10276646 observations deleted)
-file /scratch/kb103/stata/earnings_losses/regression_annual_income_year_CTG5200
-> 3.dta saved
-
-. 
 . /*
-> ***** REGRESSIONS **************************************************
+> forval yy = 1976/2003{  
 > 
-> forval yy = 1976/2003{          
->         use "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , clear
->         gen byte treatment =1 if TG5_men ==1 |TG5_women ==1
->         
->         * GENERATE Dtk dummies
->         
->         gen int current_year = .
->         local maxround = 2007-`yy'
->         
->         forval kk = -6/`maxround'{
->                 
->                 replace current_year = year_mass_layoff +`kk' 
->                 
->                 local kx = `kk' + 6
->                 
->                 gen byte D_`kx' = 0
->                 replace D_`kx' = 1 if treatment == 1 & year == current_year
->                         
+>         * DEAL WITH DUPLICATE OBSERVATIONS - IF A WORKER IS IN MORE THAN ONE 
+> TREATMENT/CONTROL GROUP
+>         local endy = `yy'+2
+>         local begy = `yy'+1
+>         use "`filepath'/EL_pid_CG5`yy'.dta"     
+>         forval yy1 = `yy'/`endy'{
+>                 append using "`filepath'/EL_pid_TG5`yy1'.dta"
 >         }
->         drop current_year
->         gen age1 = year - year_mass_layoff + age
->         gen age2 = age1^2
->         gen age3 = age1^3
->         gen age4 = age1^4
+>         keep pid 
+>         sort pid
+>         by pid: gen int index = _n
+>         by pid: egen int maxindex = max(index)
+>         drop if maxindex>1
+>         keep if index==1
+>         keep pid
+>         save  "`filepath'/EL_`yy'_CTG5tokeep.dta", replace
 >         
->         sort pid year
->         xtset pid year
+>         * CREATE A FILE FOR REGRESSION
+>         clear
+>         use "`filepath'/EL_annual_income_year`yy'.dta" 
+>         keep if CG5_men==1 | CG5_women==1 | TG5_men==1 | TG5_women==1
+>         forval yy1 = `begy'/`endy'{
+>                 append using "`filepath'/EL_annual_income_year`yy1'.dta"
+>         }
+>         merge m:1 pid using "`filepath'/EL_`yy'_CTG5tokeep.dta"
+>         keep if _merge==3
+>         drop _merge
+>   
 >         save "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , replac
-> e  
+> e
 >         
->         drop if age1>55
->         drop if year==2008
->         
->         local lastD = `maxround'+6
->         
->         xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D
+> }
+> */
+. 
+. ***** REGRESSIONS **************************************************
+. 
+. forval yy = 1976/2003{          
+  2.         use "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , clea
+> r
+  3.         gen byte treatment =1 if TG5_men ==1 |TG5_women ==1
+  4.         
+.         * GENERATE Dtk dummies
+.         
+.         gen int current_year = .
+  5.         local maxround = 2007-`yy'
+  6.         
+.         forval kk = -6/`maxround'{
+  7.                 
+.                 replace current_year = year_mass_layoff +`kk' 
+  8.                 
+.                 local kx = `kk' + 6
+  9.                 
+.                 gen byte D_`kx' = 0
+ 10.                 replace D_`kx' = 1 if treatment == 1 & year == current_yea
+> r
+ 11.                         
+.         }
+ 12.         drop current_year
+ 13.         gen age1 = year - year_mass_layoff + age
+ 14.         gen age2 = age1^2
+ 15.         gen age3 = age1^3
+ 16.         gen age4 = age1^4
+ 17.         
+.         sort pid year
+ 18.         xtset pid year
+ 19.         save "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , rep
+> lace  
+ 20.         
+.         drop if age1>55
+ 21.         drop if year==2008
+ 22.         
+.         local lastD = `maxround'+6
+ 23.         
+.         xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D
 > _`lastD' if sex==1, fe
->         xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 - D
-> _`lastD' if sex==2, fe
->         
-> }       
-> 
+ 24.         xi: xtreg real_annual_income_coded i.year age1 age2 age3 age4 D_0 
+> - D_`lastD' if sex==2, fe
+ 25.         
+. }       
+(39421425 missing values generated)
+(39770468 missing values generated)
+(39770468 real changes made)
+(1699 real changes made)
+(39770468 real changes made)
+(7805 real changes made)
+(39770468 real changes made)
+(15359 real changes made)
+(39770468 real changes made)
+(15876 real changes made)
+(39770468 real changes made)
+(15893 real changes made)
+(39770468 real changes made)
+(15913 real changes made)
+(39770468 real changes made)
+(16022 real changes made)
+(39770468 real changes made)
+(14048 real changes made)
+(39770468 real changes made)
+(13842 real changes made)
+(39770468 real changes made)
+(13575 real changes made)
+(39770468 real changes made)
+(13271 real changes made)
+(39770468 real changes made)
+(12904 real changes made)
+(39770468 real changes made)
+(12448 real changes made)
+(39770468 real changes made)
+(12058 real changes made)
+(39770468 real changes made)
+(11671 real changes made)
+(39770468 real changes made)
+(11274 real changes made)
+(39770468 real changes made)
+(10883 real changes made)
+(39770468 real changes made)
+(10439 real changes made)
+(39770468 real changes made)
+(9984 real changes made)
+(39770468 real changes made)
+(9592 real changes made)
+(39770468 real changes made)
+(9189 real changes made)
+(39770468 real changes made)
+(8722 real changes made)
+(39770468 real changes made)
+(8278 real changes made)
+(39770468 real changes made)
+(7884 real changes made)
+(39770468 real changes made)
+(7392 real changes made)
+(39770468 real changes made)
+(6943 real changes made)
+(39770468 real changes made)
+(6561 real changes made)
+(39770468 real changes made)
+(6176 real changes made)
+(39770468 real changes made)
+(5729 real changes made)
+(39770468 real changes made)
+(5354 real changes made)
+(39770468 real changes made)
+(5023 real changes made)
+(39770468 real changes made)
+(4722 real changes made)
+(39770468 real changes made)
+(4421 real changes made)
+(39770468 real changes made)
+(4100 real changes made)
+(39770468 real changes made)
+(3837 real changes made)
+(39770468 real changes made)
+(3585 real changes made)
+(39770468 real changes made)
+(3258 real changes made)
+(39770468 real changes made)
+(2290 real changes made)
+repeated time values within panel
+r(451);
 
 end of do-file
+r(451);

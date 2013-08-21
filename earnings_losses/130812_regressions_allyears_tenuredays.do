@@ -26,7 +26,7 @@ forval yy = 1976/2005{
 }
 */
 * REGRESSION FILES
-
+/*
 forval yy = 1976/2003{	
 
 	* DEAL WITH DUPLICATE OBSERVATIONS - IF A WORKER IS IN MORE THAN ONE TREATMENT/CONTROL GROUP
@@ -59,8 +59,8 @@ forval yy = 1976/2003{
 	save "`filepath'/regression_annual_income_year_CTG5`yy'.dta" , replace
 	
 }
+*/
 
-/*
 ***** REGRESSIONS **************************************************
 
 forval yy = 1976/2003{	 	
